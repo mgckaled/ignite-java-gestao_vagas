@@ -1,0 +1,11 @@
+### Post: create candidate
+POST http://localhost:8080/candidate/
+Content-Type: application/json
+
+{
+  "username": "mgckdev",
+  "name": "Marcel Kaled",
+  "email": "mgck@email.com",
+  "password": "123@123",
+  "description": "Desenvolvedor Java Junior em busca da primeira oportunidade"
+}
