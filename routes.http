@@ -6,6 +6,6 @@ Content-Type: application/json
   "username": "mgckdev",
   "name": "Marcel Kaled",
   "email": "mgck@email.com",
-  "password": "123@123",
+  "password": "123@123@123",
   "description": "Desenvolvedor Java Junior em busca da primeira oportunidade"
 }
