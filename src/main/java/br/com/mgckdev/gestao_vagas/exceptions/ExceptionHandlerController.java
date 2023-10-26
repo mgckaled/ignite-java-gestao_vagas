@@ -14,25 +14,26 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionHandlerController {
 
-  private MessageSource messageSource;
+    private MessageSource messageSource;
 
-  public ExceptionHandlerController(MessageSource message) {
-    this.messageSource = message;
-  }
+    public ExceptionHandlerController(MessageSource message) {
+        this.messageSource = message;
+    }
 
-  @ExceptionHandler(MethodArgumentNotValidException.class)
-  public ResponseEntity<List<ErrorMessageDTO>> handlerMethodArgumentNotValidadException(MethodArgumentNotValidException e) {
-    List<ErrorMessageDTO> dto = new ArrayList<>();
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<List<ErrorMessageDTO>> handlerMethodArgumentNotValidadException(
+            MethodArgumentNotValidException e) {
+        List<ErrorMessageDTO> dto = new ArrayList<>();
 
-    e.getBindingResult().getFieldErrors().forEach(err -> {
+        e.getBindingResult().getFieldErrors().forEach(err -> {
 
-      String message = messageSource.getMessage(err, LocaleContextHolder.getLocale());
+            String message = messageSource.getMessage(err, LocaleContextHolder.getLocale());
 
-      ErrorMessageDTO error = new ErrorMessageDTO(message, err.getField());
-      dto.add(error);
-    });
+            ErrorMessageDTO error = new ErrorMessageDTO(message, err.getField());
+            dto.add(error);
+        });
 
-    return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
-  }
+        return new ResponseEntity<>(dto, HttpStatus.BAD_REQUEST);
+    }
 
 }
