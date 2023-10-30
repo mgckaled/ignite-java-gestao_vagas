@@ -9,3 +9,26 @@ Content-Type: application/json
   "password": "123@123@123",
   "description": "Desenvolvedor Java Junior em busca da primeira oportunidade"
 }
+
+### Post: create company
+POST http://localhost:8080/company/
+Content-Type: application/json
+
+{
+  "username": "java_company",
+  "name": "Java Company",
+  "password": "987@987@987",
+  "email": "java@company.com.br",
+  "description": "Empresa responsável por gerenciar vagas para desenvolvedores Java",
+  "website": "http://www.javacompany.com.br"
+}
+
+### Post: create job
+POST http://localhost:8080/job/
+Content-Type: application/json
+
+{
+  "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
+  "benefits": "GymPass, Plano de Saúde, folga no aniversário, Vale Alimentação e Refeição",
+  "level": "JUNIOR"
+}
