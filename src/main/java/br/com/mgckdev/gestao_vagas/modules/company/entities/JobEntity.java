@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity(name = "job")
-public class JobEntity{
+public class JobEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,7 +25,7 @@ public class JobEntity{
     private String benefits;
     private String level;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "company_id", insertable = false, updatable = false)
     private CompanyEntity companyEntity;
 
