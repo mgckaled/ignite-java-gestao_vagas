@@ -3,11 +3,11 @@ POST http://localhost:8080/candidate/
 Content-Type: application/json
 
 {
-  "username": "jose",
-  "name": "Marcel Kaled",
-  "email": "jose@email.com",
-  "password": "123@123@123",
-  "description": "Desenvolvedor Java Junior em busca da primeira oportunidade"
+  "username": "maria",
+  "name": "Maria",
+  "email": "maria@email.com",
+  "password": "1234567890",
+  "description": "Desenvolvedor Java com exeperiência Spring Boot"
 }
 
 ### Post: create company

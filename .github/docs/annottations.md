@@ -1,8 +1,8 @@
-# *Notations*
+# *Annottations*
 
 ## Sumario
 
-- [*Notations*](#notations)
+- [*Annottations*](#annottations)
   - [Sumario](#sumario)
   - [Spring Boot](#spring-boot)
     - [`@SpringBootApplication`](#springbootapplication)
