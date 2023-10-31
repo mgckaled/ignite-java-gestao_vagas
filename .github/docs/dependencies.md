@@ -12,6 +12,7 @@
   - [`spring-boot-starter-security`](#spring-boot-starter-security)
   - [`postgresql`](#postgresql)
   - [`lombok`](#lombok)
+  - [`java-jwt`](#java-jwt)
 
 ## `spring-boot-starter-web`
 
@@ -201,3 +202,27 @@ public class Person {
 Neste exemplo, a anotação `@Data` gera automaticamente os métodos getters, setters, `equals()`, `hashCode()` e `toString()` para as propriedades da classe `Person`.
 
 Em resumo, o Lombok é uma biblioteca que pode aumentar a produtividade do desenvolvedor, eliminando a necessidade de escrever código repetitivo e tedioso em suas classes Java. No entanto, é importante lembrar que o uso do Lombok também pode tornar o código menos explícito, portanto, é fundamental equilibrar o uso das anotações do Lombok com a clareza e a manutenibilidade do código.
+
+## `java-jwt`
+
+Refere-se ao Java JSON Web Token (JWT), uma biblioteca Java que fornece funcionalidades para criar, analisar e validar tokens JWT. Tokens JWT são uma forma de representar informações entre partes como um objeto JSON. Eles são frequentemente usados para autenticação e autorização em sistemas distribuídos, especialmente em aplicativos web e serviços da web.
+
+A biblioteca "java-jwt" permite trabalhar com tokens JWT em aplicativos Java de forma conveniente. Alguns dos recursos e funcionalidades comuns oferecidos por esta biblioteca incluem:
+
+1. **Criação de Tokens JWT:** Você pode criar facilmente tokens JWT assinados usando as informações necessárias, como reclamações (claims), algoritmo de assinatura e chave secreta.
+
+2. **Validação de Tokens JWT:** A biblioteca permite verificar se um token JWT é válido, verificando a assinatura e a integridade dos dados.
+
+3. **Recuperação de Informações do Token:** Você pode extrair informações do token, como as reclamações (claims), que contêm dados relevantes para a autenticação e autorização.
+
+4. **Suporte a Diferentes Algoritmos de Assinatura:** A biblioteca suporta vários algoritmos de assinatura, como HMAC, RSA e ECDSA, permitindo escolher o algoritmo que melhor atende às suas necessidades de segurança.
+
+5. **Tratamento de Data e Hora:** A biblioteca lida com questões de data e hora automaticamente, verificando a validade do token com base nas informações de data de expiração (expiração) e data de emissão (emitido).
+
+6. **Integração com Outras Bibliotecas:** "java-jwt" pode ser usado em conjunto com outras bibliotecas relacionadas à segurança, como bibliotecas de autenticação e autorização.
+
+7. **Suporte a Padrões JWT:** A biblioteca segue as especificações padrão de tokens JWT, tornando-a compatível com outros sistemas que também usam JWT.
+
+É importante lembrar que a segurança de aplicativos que usam tokens JWT é altamente dependente da implementação correta e segura da lógica de autenticação e autorização. Além disso, a proteção adequada das chaves secretas e a gestão de tokens são essenciais para garantir a segurança do sistema.
+
+Em resumo, a biblioteca "java-jwt" é uma ferramenta valiosa para trabalhar com tokens JWT em aplicativos Java, facilitando a criação, validação e manipulação de tokens JWT, o que é comum em cenários de autenticação e autorização em sistemas distribuídos.

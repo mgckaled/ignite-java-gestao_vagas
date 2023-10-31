@@ -3,9 +3,9 @@ POST http://localhost:8080/candidate/
 Content-Type: application/json
 
 {
-  "username": "michel.dev",
-  "name": "Michel Kaled",
-  "email": "Michel@email.com",
+  "username": "munir.dev",
+  "name": "Munir Kaled",
+  "email": "munir@email.com",
   "password": "1234567890",
   "description": "Desenvolvedor Java com exeperiência Spring Boot"
 }

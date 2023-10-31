@@ -1,6 +1,7 @@
 package br.com.mgckdev.gestao_vagas.modules.company.useCases;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.mgckdev.gestao_vagas.exceptions.UserFoundException;
@@ -10,16 +11,22 @@ import br.com.mgckdev.gestao_vagas.modules.company.repositories.CompanyRepositor
 @Service
 public class CreateCompanyUseCase {
 
-  @Autowired
-  private CompanyRepository companyRepository;
+    @Autowired
+    private CompanyRepository companyRepository;
 
-  public CompanyEntity execute(CompanyEntity companyEntity) {
-    this.companyRepository
-        .findByUsernameOrEmail(companyEntity.getUsername(), companyEntity.getEmail())
-        .ifPresent(user -> {
-          throw new UserFoundException();
-        });
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    return this.companyRepository.save(companyEntity);
-  }
+    public CompanyEntity execute(CompanyEntity companyEntity) {
+        this.companyRepository
+                .findByUsernameOrEmail(companyEntity.getUsername(), companyEntity.getEmail())
+                .ifPresent(user -> {
+                    throw new UserFoundException();
+                });
+
+        var password = passwordEncoder.encode(companyEntity.getPassword());
+        companyEntity.setPassword(password);
+
+        return this.companyRepository.save(companyEntity);
+    }
 }
