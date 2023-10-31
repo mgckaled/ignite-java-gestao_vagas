@@ -12,7 +12,7 @@ Content-Type: application/json
 
 ### Post: create company
 POST http://localhost:8080/company/
-Content-Type: application/json
+Content-Type: application/json 
 
 {
   "username": "java_jobs",
@@ -23,13 +23,23 @@ Content-Type: application/json
   "website": "http://www.java-jobs.com.br"
 }
 
+### 
+
+POST http://localhost:8080/auth/company/
+Content-Type: application/json 
+
+{
+  "username": "java_jobs",
+  "password": "987@654@321",
+}
+
 ### Post: create job
 POST http://localhost:8080/job/
 Content-Type: application/json
+Authorization: Bearer 
 
 {
   "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
   "benefits": "GymPass, Plano de Saúde, folga no aniversário, Vale Alimentação e Refeição",
   "level": "JUNIOR",
-  "companyId": "2351c5a9-29d4-41fd-b1d5-8d39de8aa462"
 }
