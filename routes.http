@@ -3,9 +3,9 @@ POST http://localhost:8080/candidate/
 Content-Type: application/json
 
 {
-  "username": "maria",
-  "name": "Maria",
-  "email": "maria@email.com",
+  "username": "michel.dev",
+  "name": "Michel Kaled",
+  "email": "Michel@email.com",
   "password": "1234567890",
   "description": "Desenvolvedor Java com exeperiência Spring Boot"
 }
@@ -15,12 +15,12 @@ POST http://localhost:8080/company/
 Content-Type: application/json
 
 {
-  "username": "java_company",
-  "name": "Java Company",
-  "password": "987@987@987",
-  "email": "java@company.com.br",
+  "username": "java_jobs",
+  "name": "Java Jobs",
+  "password": "987@654@321",
+  "email": "java@jobs.com.br",
   "description": "Empresa responsável por gerenciar vagas para desenvolvedores Java",
-  "website": "http://www.javacompany.com.br"
+  "website": "http://www.java-jobs.com.br"
 }
 
 ### Post: create job
@@ -30,5 +30,6 @@ Content-Type: application/json
 {
   "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
   "benefits": "GymPass, Plano de Saúde, folga no aniversário, Vale Alimentação e Refeição",
-  "level": "JUNIOR"
+  "level": "JUNIOR",
+  "companyId": "2351c5a9-29d4-41fd-b1d5-8d39de8aa462"
 }
