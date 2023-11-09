@@ -3,13 +3,24 @@ POST http://localhost:8080/candidate/
 Content-Type: application/json
 
 {
-  "username": "b.dev",
-  "name": "b",
-  "email": "b@email.com",
-  "password": "12345678910",
+  "username": "caio.dev",
+  "name": "caio",
+  "email": "caio@email.com",
+  "password": "1234@1234@",
   "description": "Desenvolvedor Java",
-  "curriculum": "a"
+  "curriculum": "c"
 }
+
+### Post: create candidate with auth
+POST http://localhost:8080/candidate/auth
+Content-Type: application/json
+
+{
+  "username": "caio.dev",
+  "password": "1234@1234@"
+}
+
+
 
 ### Post: create company
 POST http://localhost:8080/company/
@@ -26,21 +37,21 @@ Content-Type: application/json
 
 ### 
 
-POST http://localhost:8080/auth/company/
+POST http://localhost:8080/auth/company
 Content-Type: application/json 
 
 {
   "username": "java_jobs",
-  "password": "987@654@321",
+  "password": "987@654@321"
 }
 
 ### Post: create job
 POST http://localhost:8080/job/
 Content-Type: application/json
-Authorization: Bearer {660D366FCB7B710A6C134FD844460892}
+Authorization: Bearer{eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNjk5NTcwNTMyLCJzdWIiOiIzYzI4ZjI2Mi0zYTMyLTRhYjAtYmNhYS00NzQ1YTM1MDk0MDgifQ.Q2Pi7urz9wJrb5V4Ce4GK7KJ6Qmg_DAV48Paa678BOc}
 
 {
   "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
   "benefits": "GymPass, Plano de Saúde, folga no aniversário, Vale Alimentação e Refeição",
-  "level": "JUNIOR",
+  "level": "JUNIOR"
 }
