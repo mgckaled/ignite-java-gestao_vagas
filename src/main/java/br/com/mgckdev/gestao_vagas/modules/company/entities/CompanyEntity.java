@@ -30,7 +30,7 @@ public class CompanyEntity {
     @Email(message = "O campo deve conter um e-mail válido")
     private String email;
 
-    @Length(min = 10, max = 50, message = "O campo deve conter entre (10) e (50) caracteres")
+    @Length(min = 10, max = 300, message = "O campo deve conter entre (10) e (300) caracteres")
     private String password;
     private String name;
     private String website;

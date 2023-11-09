@@ -3,16 +3,17 @@ POST http://localhost:8080/candidate/
 Content-Type: application/json
 
 {
-  "username": "munir.dev",
-  "name": "Munir Kaled",
-  "email": "munir@email.com",
-  "password": "1234567890",
-  "description": "Desenvolvedor Java com exeperiência Spring Boot"
+  "username": "b.dev",
+  "name": "b",
+  "email": "b@email.com",
+  "password": "12345678910",
+  "description": "Desenvolvedor Java",
+  "curriculum": "a"
 }
 
 ### Post: create company
 POST http://localhost:8080/company/
-Content-Type: application/json 
+Content-Type: application/json
 
 {
   "username": "java_jobs",
@@ -36,7 +37,7 @@ Content-Type: application/json
 ### Post: create job
 POST http://localhost:8080/job/
 Content-Type: application/json
-Authorization: Bearer 
+Authorization: Bearer {660D366FCB7B710A6C134FD844460892}
 
 {
   "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
