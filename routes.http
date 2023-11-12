@@ -3,24 +3,26 @@ POST http://localhost:8080/candidate/
 Content-Type: application/json
 
 {
-  "username": "caio.dev",
-  "name": "caio",
-  "email": "caio@email.com",
-  "password": "1234@1234@",
+  "username": "eduardo.dev",
+  "name": "Eduardo",
+  "email": "Eduardo@email.com",
+  "password": "1234@1234@1234",
   "description": "Desenvolvedor Java",
   "curriculum": "c"
 }
 
-### Post: create candidate with auth
+### Post: candidate auth
 POST http://localhost:8080/candidate/auth
 Content-Type: application/json
 
 {
-  "username": "caio.dev",
-  "password": "1234@1234@"
+  "username": "eduardo.dev",
+  "password": "1234@1234@1234"
 }
 
-
+### Get: 
+GET http://localhost:8080/candidate/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwic3ViIjoiYmNjZmY2YzItNjMzOC00MTQzLWE1ZTUtOWM5NGQzYWMyMjM5Iiwicm9sZXMiOlsiY2FuZGlkYXRlIl0sImV4cCI6MTY5OTU4MTE5OX0.N34aVbNLFkaoYJS4ho2Lc8ZqrJNXy09elhYJOr6bt9Q
 
 ### Post: create company
 POST http://localhost:8080/company/
@@ -35,9 +37,9 @@ Content-Type: application/json
   "website": "http://www.java-jobs.com.br"
 }
 
-### 
+### company auth
 
-POST http://localhost:8080/auth/company
+POST http://localhost:8080/company/auth
 Content-Type: application/json 
 
 {
@@ -48,7 +50,7 @@ Content-Type: application/json
 ### Post: create job
 POST http://localhost:8080/job/
 Content-Type: application/json
-Authorization: Bearer{eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNjk5NTcwNTMyLCJzdWIiOiIzYzI4ZjI2Mi0zYTMyLTRhYjAtYmNhYS00NzQ1YTM1MDk0MDgifQ.Q2Pi7urz9wJrb5V4Ce4GK7KJ6Qmg_DAV48Paa678BOc}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNjk5NTcwNTMyLCJzdWIiOiIzYzI4ZjI2Mi0zYTMyLTRhYjAtYmNhYS00NzQ1YTM1MDk0MDgifQ.Q2Pi7urz9wJrb5V4Ce4GK7KJ6Qmg_DAV48Paa678BOc
 
 {
   "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
