@@ -1,5 +1,7 @@
 # Dependencies
 
+> [voltar](../../README.md) para a página anterior
+
 ## Sumário
 
 - [Dependencies](#dependencies)
@@ -36,6 +38,8 @@ Algumas das principais funcionalidades e componentes que a dependência "spring-
 
 Em resumo, a dependência "spring-boot-starter-web" desempenha um papel fundamental na simplificação do desenvolvimento de aplicativos web Java usando o Spring Boot. Ela fornece todas as ferramentas e configurações necessárias para criar aplicativos web robustos e eficientes de forma rápida e fácil.
 
+> [retornar](#dependencies) para o topo da página
+
 ## `spring-boot-starter-validation`
 
 A dependência "spring-boot-starter-validation" é uma parte do ecossistema Spring Boot e é usada para simplificar a validação de dados em aplicativos Java baseados em Spring. Ela faz parte do módulo de validação do Spring Framework e fornece recursos que ajudam os desenvolvedores a garantir que os dados inseridos ou manipulados em seus aplicativos estejam em conformidade com as regras de validação desejadas.
@@ -53,6 +57,8 @@ Ao incluir a dependência "spring-boot-starter-validation" no seu projeto Spring
 4. Personalização de mensagens de erro: É possível personalizar as mensagens de erro exibidas quando a validação falha, para que os usuários recebam mensagens de erro significativas e relevantes.
 
 Em resumo, a dependência "spring-boot-starter-validation" simplifica a validação de dados em aplicativos Spring Boot, permitindo que os desenvolvedores definam facilmente regras de validação usando anotações, evitando a necessidade de escrever código de validação personalizado e facilitando a detecção de erros de validação. Isso contribui para a criação de aplicativos mais robustos e seguros.
+
+> [retornar](#dependencies) para o topo da página
 
 ## `spring-boot-devtools`
 
@@ -78,6 +84,8 @@ Lembrando que, embora o "spring-boot-devtools" seja uma ferramenta valiosa duran
 
 Em resumo, a dependência "spring-boot-devtools" é uma ferramenta extremamente útil para aumentar a produtividade dos desenvolvedores durante o desenvolvimento de aplicativos Spring Boot, simplificando a recarga automática de código e recursos, a personalização de propriedades e a melhoria da experiência de desenvolvimento em geral.
 
+> [retornar](#dependencies) para o topo da página
+
 ## `spring-boot-starter-test`
 
 A dependência "spring-boot-starter-test" é uma parte essencial do ecossistema Spring Boot e é usada para facilitar a escrita de testes automatizados em aplicativos Spring Boot. Ela fornece um conjunto abrangente de bibliotecas, configurações e ferramentas para criar e executar testes unitários, de integração e de ponta a ponta em um ambiente de desenvolvimento Spring Boot. Essa dependência é frequentemente incluída nos projetos Spring Boot para garantir que os testes sejam fáceis de escrever e executar.
@@ -99,6 +107,8 @@ A dependência "spring-boot-starter-test" inclui várias bibliotecas de teste po
 7. **Configuração de ambiente de teste personalizada:** É possível personalizar o ambiente de teste com propriedades específicas do teste, como configurações de banco de dados ou propriedades do aplicativo.
 
 Em resumo, a dependência "spring-boot-starter-test" é uma ferramenta valiosa para simplificar o processo de escrita e execução de testes em aplicativos Spring Boot. Ela fornece um ambiente de teste configurado automaticamente, integração com ferramentas de teste populares e suporte a diferentes tipos de testes, tornando mais fácil garantir a qualidade e a confiabilidade do seu aplicativo durante o desenvolvimento.
+
+> [retornar](#dependencies) para o topo da página
 
 ## `spring-boot-starter-data-jpa`
 
@@ -124,6 +134,8 @@ Aqui estão os principais recursos e benefícios que a dependência "spring-boot
 
 Em resumo, a dependência "spring-boot-starter-data-jpa" é uma escolha comum para o desenvolvimento de aplicativos Java que precisam interagir com bancos de dados relacionais usando a tecnologia JPA. Ela simplifica significativamente a configuração e o acesso a dados, permitindo que os desenvolvedores foquem mais na lógica de negócios e menos na configuração de acesso a dados.
 
+> [retornar](#dependencies) para o topo da página
+
 ## `spring-boot-starter-security`
 
 A dependência "spring-boot-starter-security" faz parte do ecossistema Spring Boot e é utilizada para adicionar recursos de segurança a aplicativos Java baseados em Spring Boot. Ela facilita a implementação de autenticação, autorização e outras funcionalidades de segurança em seus aplicativos de forma eficaz.
@@ -148,6 +160,8 @@ Aqui estão os principais recursos e funcionalidades que a dependência "spring-
 
 Em resumo, a dependência "spring-boot-starter-security" é uma escolha comum para adicionar recursos de segurança a aplicativos Spring Boot. Ela simplifica a configuração e a implementação de autenticação, autorização e proteção contra ameaças de segurança, permitindo que os desenvolvedores protejam seus aplicativos de forma eficaz. É especialmente valiosa para aplicativos que lidam com informações confidenciais e precisam garantir que apenas usuários autorizados tenham acesso a recursos protegidos.
 
+> [retornar](#dependencies) para o topo da página
+
 ## `postgresql`
 
 O PostgreSQL não é uma dependência do Java em si, mas é um banco de dados relacional de código aberto que pode ser usado em conjunto com aplicativos Java. O PostgreSQL é um sistema de gerenciamento de banco de dados (SGBD) que permite armazenar, recuperar e gerenciar dados de forma persistente em um formato de tabela relacionado.
@@ -167,6 +181,8 @@ A dependência real no contexto de um projeto Java será uma dependência Maven 
 Depois de adicionar essa dependência ao seu projeto Java, você pode usar as classes e métodos fornecidos pelo driver JDBC do PostgreSQL para estabelecer uma conexão com o banco de dados PostgreSQL, executar consultas SQL, inserir, atualizar ou excluir dados e recuperar resultados em seu aplicativo Java.
 
 Em resumo, o PostgreSQL não é uma dependência do Java em si, mas é um SGBD que pode ser usado em conjunto com aplicativos Java. A dependência real em um projeto Java seria a biblioteca do driver JDBC do PostgreSQL, que permite a comunicação entre o aplicativo Java e o banco de dados PostgreSQL.
+
+> [retornar](#dependencies) para o topo da página
 
 ## `lombok`
 
@@ -203,6 +219,8 @@ Neste exemplo, a anotação `@Data` gera automaticamente os métodos getters, se
 
 Em resumo, o Lombok é uma biblioteca que pode aumentar a produtividade do desenvolvedor, eliminando a necessidade de escrever código repetitivo e tedioso em suas classes Java. No entanto, é importante lembrar que o uso do Lombok também pode tornar o código menos explícito, portanto, é fundamental equilibrar o uso das anotações do Lombok com a clareza e a manutenibilidade do código.
 
+> [retornar](#dependencies) para o topo da página
+
 ## `java-jwt`
 
 Refere-se ao Java JSON Web Token (JWT), uma biblioteca Java que fornece funcionalidades para criar, analisar e validar tokens JWT. Tokens JWT são uma forma de representar informações entre partes como um objeto JSON. Eles são frequentemente usados para autenticação e autorização em sistemas distribuídos, especialmente em aplicativos web e serviços da web.
@@ -226,3 +244,7 @@ A biblioteca "java-jwt" permite trabalhar com tokens JWT em aplicativos Java de 
 É importante lembrar que a segurança de aplicativos que usam tokens JWT é altamente dependente da implementação correta e segura da lógica de autenticação e autorização. Além disso, a proteção adequada das chaves secretas e a gestão de tokens são essenciais para garantir a segurança do sistema.
 
 Em resumo, a biblioteca "java-jwt" é uma ferramenta valiosa para trabalhar com tokens JWT em aplicativos Java, facilitando a criação, validação e manipulação de tokens JWT, o que é comum em cenários de autenticação e autorização em sistemas distribuídos.
+
+> [retornar](#dependencies) para o topo da página
+>
+> [voltar](../../README.md) para a página anterior
