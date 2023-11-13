@@ -22,7 +22,8 @@ Content-Type: application/json
 
 ### Get: 
 GET http://localhost:8080/candidate/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwic3ViIjoiMzJjMjVhMjQtYjc0Mi00NmQ2LWFlYzctZjFkM2EzOGVhYTQ0Iiwicm9sZXMiOlsiQ0FORElEQVRFIl0sImV4cCI6MTY5OTg3Nzc3NX0.5WkVDDV6WyXy_-10r6c6cGFDDYN7hIKbC_pY9j5MbA8
+accept: */*
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwic3ViIjoiMzJjMjVhMjQtYjc0Mi00NmQ2LWFlYzctZjFkM2EzOGVhYTQ0Iiwicm9sZXMiOlsiQ0FORElEQVRFIl0sImV4cCI6MTY5OTg5ODEyOX0.Eqok7_20Q6QTEQtNwexy5pUzT4i-ms_v_fHPJ6Xr4pQ
 
 ### Post: create company
 POST http://localhost:8080/company/
