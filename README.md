@@ -36,6 +36,8 @@ Desenvolvimento de uma API REST para controles de Empresas, vagas e aplicações
 
 Criação da documentação da aplicação desenvolvida no módulo 3, utilziando o Swagger, que é uma das ferramentas mais utilziadas para a criação de documentação. Através dela foi definido exemplos de requisições e retornos.
 
+> Rota de acesso a documentação: `http://localhost:8080/swagger-ui/index.html`
+
 ### Módulo 5 - Testes e Qualidade de Código
 
 ### Módulo 6 - Implantação e Monitoramento
