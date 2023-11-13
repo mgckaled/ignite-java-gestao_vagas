@@ -2,7 +2,7 @@
 
 # `company/`
 
-> [voltar](../c_code-analysis.md) para a página anterior
+> [voltar](../../c_code-analysis.md) para a página anterior
 
 ## Sumário
 
@@ -24,4 +24,4 @@
 
 ### `useCases/`
 
-> [voltar](../c_code-analysis.md) para a página anterior
+> [voltar](../../c_code-analysis.md) para a página anterior

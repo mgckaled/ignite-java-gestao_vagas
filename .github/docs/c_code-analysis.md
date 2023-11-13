@@ -5,7 +5,7 @@
 - [exceptions](./code/exceptions.md)
 - [modules]
   - [candidate](./code/modules/canditate.md)
-  - [candidate](./code/modules/company.md)
+  - [company](./code/modules/company.md)
 - [providers](./code/providers.md)
 - [security](./code/security.md)
 

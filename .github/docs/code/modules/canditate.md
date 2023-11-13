@@ -1,12 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 
-# `cadidate/`
+# `candidate/`
 
-> [voltar](../c_code-analysis.md) para a página anterior
+> [voltar](../../c_code-analysis.md) para a página anterior
 
 ## Sumário
 
-- [`cadidate/`](#cadidate)
+- [`candidate/`](#candidate)
   - [Sumário](#sumário)
     - [`controllers/`](#controllers)
     - [`dto/`](#dto)
@@ -17,3 +17,5 @@
 ### `dto/`
 
 ### `useCases/`
+
+> [voltar](../../c_code-analysis.md) para a página anterior
