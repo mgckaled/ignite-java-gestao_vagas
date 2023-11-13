@@ -20,6 +20,8 @@
   - [Sobre o Projeto](#sobre-o-projeto)
     - [Módulo 3 - Gestão de Vagas](#módulo-3---gestão-de-vagas)
     - [Módulo 4 - Documentação](#módulo-4---documentação)
+    - [Módulo 5 - Testes e Qualidade de Código](#módulo-5---testes-e-qualidade-de-código)
+    - [Módulo 6 - Implantação e Monitoramento](#módulo-6---implantação-e-monitoramento)
   - [Tecnologias](#tecnologias)
     - [Principais Bibliotecas (Packages)](#principais-bibliotecas-packages)
   - [Licença](#licença)
@@ -33,6 +35,10 @@ Desenvolvimento de uma API REST para controles de Empresas, vagas e aplicações
 ### Módulo 4 - Documentação
 
 Criação da documentação da aplicação desenvolvida no módulo 3, utilziando o Swagger, que é uma das ferramentas mais utilziadas para a criação de documentação. Através dela foi definido exemplos de requisições e retornos.
+
+### Módulo 5 - Testes e Qualidade de Código
+
+### Módulo 6 - Implantação e Monitoramento
 
 ## Tecnologias
 
