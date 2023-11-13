@@ -48,6 +48,8 @@ Criação da documentação da aplicação desenvolvida no módulo 3, utilziando
 > Mais informações sobre [dependências do projeto](./.github/docs/a_dependencies.md).
 >
 > Informações sobre as principais [notações](./.github/docs/b_annotations.md).
+>
+> Análise interpretativa e lógica do [código](./.github/docs/c_code-analysis.md)
 
 ## Licença
 
