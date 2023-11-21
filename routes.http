@@ -3,29 +3,80 @@ POST http://localhost:8080/candidate/
 Content-Type: application/json
 
 {
-  "username": "eduardo.dev",
-  "name": "Eduardo",
-  "email": "Eduardo@email.com",
-  "password": "1234@1234@1234",
-  "description": "Desenvolvedor Java",
-  "curriculum": "c"
+  "username": "mgck.dev",
+  "name": "mgck",
+  "email": "mgck@email.com",
+  "password": "12345@12345",
+  "description": "Desenvolvedor Java Spring Boot",
+  "curriculum": ""
 }
 
-### Post: candidate auth
+HTTP/1.1 400  - Bad Request
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: text/plain;charset=UTF-8
+content-length: 20
+date: Tue, 21 Nov 2023 22:50:11 GMT
+connection: close
+###
 POST http://localhost:8080/candidate/auth
 Content-Type: application/json
 
 {
-  "username": "eduardo.dev",
-  "password": "1234@1234@1234"
+  "username": "mgck.dev",
+  "password": "12345@12345"
 }
 
-### Get: 
-GET http://localhost:8080/candidate/
-accept: */*
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwic3ViIjoiMzJjMjVhMjQtYjc0Mi00NmQ2LWFlYzctZjFkM2EzOGVhYTQ0Iiwicm9sZXMiOlsiQ0FORElEQVRFIl0sImV4cCI6MTY5OTg5ODEyOX0.Eqok7_20Q6QTEQtNwexy5pUzT4i-ms_v_fHPJ6Xr4pQ
+HTTP/1.1 200  - OK
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+transfer-encoding: chunked
+date: Tue, 21 Nov 2023 22:50:14 GMT
+connection: close
+###
+POST http://localhost:8080/candidate/job/apply
+Content-Type: application/json
 
-### Post: create company
+{
+  "username": "mgck.dev",
+  "password": "12345@12345"
+}
+
+HTTP/1.1 403  - Forbidden
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-length: 0
+date: Tue, 21 Nov 2023 22:45:14 GMT
+connection: close
+###
+GET http://localhost:8080/candidate/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwic3ViIjoiNmY1MjA4NmEtNjY4NC00MWEzLWI2ZTctMDkxZDdiYjIyN2Q1Iiwicm9sZXMiOlsiQ0FORElEQVRFIl0sImV4cCI6MTcwMDYwNzYxNH0.Vka9CEbA6djspleKdcSt08SOn5e7iaZjfHV2IqIc4Zc
+
+HTTP/1.1 403  - Forbidden
+accept: application/json, application/*+json
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-length: 0
+date: Tue, 21 Nov 2023 22:50:50 GMT
+connection: close
+###
 POST http://localhost:8080/company/
 Content-Type: application/json
 
@@ -38,7 +89,18 @@ Content-Type: application/json
   "website": "http://www.java-jobs.com.br"
 }
 
-### company auth
+HTTP/1.1 400  - Bad Request
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: text/plain;charset=UTF-8
+content-length: 20
+date: Tue, 21 Nov 2023 22:50:55 GMT
+connection: close
+###
 
 POST http://localhost:8080/company/auth
 Content-Type: application/json 
@@ -48,13 +110,36 @@ Content-Type: application/json
   "password": "987@654@321"
 }
 
-### Post: create job
-POST http://localhost:8080/job/
+HTTP/1.1 200  - OK
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-type: application/json
+transfer-encoding: chunked
+date: Tue, 21 Nov 2023 22:52:30 GMT
+connection: close
+###
+POST http://localhost:8080/company/job/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNjk5NTcwNTMyLCJzdWIiOiIzYzI4ZjI2Mi0zYTMyLTRhYjAtYmNhYS00NzQ1YTM1MDk0MDgifQ.Q2Pi7urz9wJrb5V4Ce4GK7KJ6Qmg_DAV48Paa678BOc
+accept: */*
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNzAwNjA3NjYxLCJzdWIiOiIzMzZlNjM1ZS0wOTE4LTQ4YzItYjdiYi1iM2JhMjFhMWRmZDAiLCJyb2xlcyI6WyJDT01QQU5ZIl19.91o-t9hmX_UiEbEUTmIxam25MkHR5zubmMUuvQGahX0
 
-{
+{ 
   "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
   "benefits": "GymPass, Plano de Saúde, folga no aniversário, Vale Alimentação e Refeição",
   "level": "JUNIOR"
 }
+
+HTTP/1.1 403  - Forbidden
+x-content-type-options: nosniff
+x-xss-protection: 0
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+x-frame-options: DENY
+content-length: 0
+date: Tue, 21 Nov 2023 22:52:26 GMT
+connection: close
