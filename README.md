@@ -40,6 +40,8 @@ Criação da documentação da aplicação desenvolvida no módulo 3, utilziando
 
 ### Módulo 5 - Testes e Qualidade de Código
 
+Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Mockito, com testes de integração e testes unitários.
+
 ### Módulo 6 - Implantação e Monitoramento
 
 ## Tecnologias

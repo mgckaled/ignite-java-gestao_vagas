@@ -8,37 +8,66 @@
 
 - [`exceptions/`](#exceptions)
   - [Sumário](#sumário)
-  - [`ErrorMessageDTO.java`](#errormessagedtojava)
-    - [Função](#função)
-    - [Análise do Código](#análise-do-código)
-  - [`ExceptionHandlerController.java`](#exceptionhandlercontrollerjava)
-    - [Função](#função-1)
-    - [Análise do Código](#análise-do-código-1)
-  - [`UserFoundException.java`](#userfoundexceptionjava)
-    - [Função](#função-2)
-    - [Análise do Código](#análise-do-código-2)
+  - [Função](#função)
+  - [Análise do Código](#análise-do-código)
+    - [`ErrorMessageDTO.java`](#errormessagedtojava)
+    - [`ExceptionHandlerController.java`](#exceptionhandlercontrollerjava)
+    - [`JobNotFoundException.java`](#jobnotfoundexceptionjava)
+    - [`UserFoundException.java`](#userfoundexceptionjava)
+    - [`UserNotFoundException.java`](#usernotfoundexceptionjava)
 
-## `ErrorMessageDTO.java`
+## Função
 
-### Função
+## Análise do Código
 
-### Análise do Código
+### `ErrorMessageDTO.java`
 
-> [retornar](#exceptions) para o topo da página
+1. **Importações do Lombok:**
 
-## `ExceptionHandlerController.java`
+   ```java
+   import lombok.AllArgsConstructor;
+   import lombok.Data;
+   ```
 
-### Função
+   - `@AllArgsConstructor`: Essa anotação do Lombok gera automaticamente um construtor que aceita todos os campos da classe como argumentos. Ele evita a necessidade de escrever explicitamente um construtor com todos os parâmetros.
 
-### Análise do Código
+   - `@Data`: Essa anotação combina várias outras anotações, incluindo `@Getter`, `@Setter`, `@ToString`, `@EqualsAndHashCode` e `@RequiredArgsConstructor`. Em outras palavras, ela simplifica a criação de métodos comuns, tornando o código mais conciso e legível.
 
-> [retornar](#exceptions) para o topo da página
+2. **Definição da Classe `ErrorMessageDTO`:**
 
-## `UserFoundException.java`
+   ```java
+   public class ErrorMessageDTO {
+   ```
 
-### Função
+   - `ErrorMessageDTO` é o nome da classe.
 
-### Análise do Código
+3. **Atributos da Classe:**
+
+   ```java
+   private String message;
+   private String field;
+   ```
+
+   - `message` e `field` são atributos privados da classe.
+
+4. **Métodos Gerados pelo Lombok:**
+   - `@Data` gera automaticamente os seguintes métodos (entre outros):
+      - Métodos `get` e `set` para os atributos `message` e `field`.
+      - Um método `toString` que retorna uma representação de string da instância da classe.
+      - Métodos `equals` e `hashCode` para comparação e geração de códigos hash com base nos valores dos atributos.
+
+   - `@AllArgsConstructor` gera um construtor que aceita todos os atributos como parâmetros.
+
+5. **Resultado Final:**
+   Graças às anotações do Lombok, você pode criar uma instância da classe `ErrorMessageDTO`, acessar e modificar seus atributos de forma fácil e concisa, e obter automaticamente implementações adequadas de métodos comuns. Existe uma redução significativa da quantidade de código boilerplate que você normalmente escreveria para criar esses métodos manualmente.
+
+### `ExceptionHandlerController.java`
+
+### `JobNotFoundException.java`
+
+### `UserFoundException.java`
+
+### `UserNotFoundException.java`
 
 > [retornar](#exceptions) para o topo da página
 >
