@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.mgckdev.gestao_vagas.exceptions.JobNotFoundException;
 import br.com.mgckdev.gestao_vagas.exceptions.UserNotFoundException;
 import br.com.mgckdev.gestao_vagas.modules.candidate.CandidateRepository;
+import br.com.mgckdev.gestao_vagas.modules.candidate.repository.ApplyJobRepository;
 import br.com.mgckdev.gestao_vagas.modules.company.repositories.JobRepository;
 
 @Service
@@ -18,6 +19,9 @@ public class ApplyJobCandidateUseCase {
 
     @Autowired
     private JobRepository jobRepository;
+
+    @Autowired
+    private ApplyJobRepository applyJobRepository;
 
     // ID do candidato
     // ID da vaga
