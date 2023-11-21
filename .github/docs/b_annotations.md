@@ -18,6 +18,13 @@
   - [Lombok](#lombok)
     - [`@Data`](#data)
     - [`@Builder`](#builder)
+  - [Anotações de Testes](#anotações-de-testes)
+    - [`@Test`](#test)
+    - [`@DisplayName`](#displayname)
+    - [`@ExtendWith`](#extendwith)
+  - [Mockito](#mockito)
+    - [`@InjectMocks`](#injectmocks)
+    - [`@Mock`](#mock)
 
 ## Spring Boot
 
@@ -362,6 +369,227 @@ public class ExemploBuilder {
 Neste exemplo, a anotação `@Builder` elimina a necessidade de escrever manualmente um construtor com diversos parâmetros e fornece um construtor de "construção" que simplifica a criação de instâncias da classe `ExemploBuilder`.
 
 Ao usar o padrão de construtor, você pode criar objetos de maneira mais legível e evitar construtores com muitos parâmetros, tornando seu código mais fácil de entender e manter.
+
+> [retornar](#annottations) para o topo da página
+
+## Anotações de Testes
+
+### `@Test`
+
+A anotação `@Test` faz parte do framework de teste JUnit 5, específicamente do módulo JUnit Jupiter (`org.junit.jupiter.api`). Essa anotação é usada para marcar um método como um método de teste. Quando você executa os testes, o JUnit Jupiter identifica e executa todos os métodos marcados com `@Test`.
+
+Aqui estão algumas características e funcionalidades associadas à anotação `@Test`:
+
+1. **Identificação de Métodos de Teste:**
+   - Ao marcar um método com `@Test`, você está indicando ao JUnit que este método contém lógica de teste. Durante a execução dos testes, o JUnit executa todos os métodos marcados como testes.
+
+2. **Asserções:**
+   - Dentro de um método marcado com `@Test`, você geralmente encontra asserções que verificam se determinadas condições são verdadeiras. As asserções são usadas para validar o comportamento esperado do código sendo testado.
+
+3. **Ciclo de Vida do Teste:**
+   - O JUnit oferece métodos de ciclo de vida, como `@BeforeEach` e `@AfterEach`, que podem ser usados para executar código de configuração ou limpeza antes e depois de cada método de teste marcado com `@Test`. Isso ajuda a garantir um estado consistente antes da execução de cada teste.
+
+4. **Parâmetros de Teste (JUnit 5+):**
+   - O JUnit 5 introduziu a capacidade de passar parâmetros para métodos de teste. Você pode utilizar a anotação `@ParameterizedTest` ou `@ValueSource` para testes parametrizados.
+
+5. **Testes de Exceção (JUnit 4):**
+   - No JUnit 4, para testar exceções, você pode usar a atributo `expected` da anotação `@Test`. Já no JUnit 5, o suporte a testes de exceção foi aprimorado com a anotação `@Test` suportando diretamente a assertiva de exceção.
+
+Exemplo de uso básico:
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class MeuTeste {
+
+    @Test
+    public void meuMetodoDeTeste() {
+        // Lógica de teste e asserções aqui
+        assertEquals(2, 1 + 1);
+    }
+}
+```
+
+Neste exemplo, o método `meuMetodoDeTeste` é marcado como um teste usando `@Test`, e a asserção `assertEquals` verifica se a soma de 1 + 1 é igual a 2. Se a asserção falhar, o teste é considerado como falhado.
+
+> [retornar](#annottations) para o topo da página
+
+### `@DisplayName`
+
+A anotação `@DisplayName` faz parte do framework de teste JUnit 5 (JUnit Jupiter) e é utilizada para fornecer um nome mais descritivo aos métodos de teste. Ela não afeta o resultado dos testes, mas pode ser útil para tornar os relatórios de testes mais legíveis e compreensíveis. Essa anotação é opcional e é uma prática recomendada para melhorar a clareza dos relatórios de execução de testes.
+
+Aqui está um exemplo de como a anotação `@DisplayName` pode ser usada em conjunto com a anotação `@Test`:
+
+```java
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class MeuTeste {
+
+    @Test
+    @DisplayName("Teste de soma")
+    public void meuMetodoDeTeste() {
+        // Lógica de teste e asserções aqui
+        assertEquals(2, 1 + 1);
+    }
+}
+```
+
+Neste exemplo, o método de teste `meuMetodoDeTeste` está marcado com a anotação `@DisplayName("Teste de soma")`. Isso significa que, ao executar os testes, o relatório indicará que este teste específico tem o nome "Teste de soma". Isso pode ser particularmente útil quando você tem muitos testes e deseja tornar o propósito de cada teste mais claro no relatório de execução.
+
+Lembrando que a anotação `@DisplayName` é completamente opcional, e se não for fornecida, o nome do método de teste será utilizado nos relatórios padrão de execução de testes.
+
+> [retornar](#annottations) para o topo da página
+
+### `@ExtendWith`
+
+A anotação `@ExtendWith` é parte do framework de teste JUnit 5 (JUnit Jupiter) e é utilizada para registrar extensões (extensions) que podem ser usadas para estender o comportamento dos testes. As extensões são uma forma de modularizar e reutilizar código que precisa ser compartilhado entre vários testes.
+
+Aqui estão alguns pontos importantes sobre a anotação `@ExtendWith`:
+
+1. **Registro de Extensões:**
+   - `@ExtendWith` é usada para registrar uma ou mais classes que implementam a interface `Extension` (ou suas subinterfaces). Essas classes são então consideradas como extensões que afetam o comportamento dos testes.
+
+2. **Uso de Extensões:**
+   - As extensões podem ser utilizadas para adicionar funcionalidades extras aos testes, como ações de inicialização e limpeza, manipulação de contexto de teste, entre outros.
+
+3. **Múltiplas Extensões:**
+   - Você pode usar `@ExtendWith` para registrar várias extensões, criando assim uma cadeia de extensões. A ordem em que as extensões são registradas pode ser significativa, pois a execução ocorre na ordem em que as extensões são registradas.
+
+4. **Exemplo de Uso Básico:**
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import org.junit.jupiter.api.extension.ExtendWith;
+   import some.package.MyExtension;
+
+   @ExtendWith(MyExtension.class)
+   public class MeuTeste {
+
+       @Test
+       public void meuMetodoDeTeste() {
+           // Lógica de teste aqui
+       }
+   }
+   ```
+
+   Neste exemplo, `MyExtension` é uma classe que implementa a interface `Extension`, e ela será utilizada como uma extensão para o teste.
+
+5. **Extensões Padrão:**
+   - O JUnit Jupiter fornece algumas extensões padrão, como `TestInfo`, `TestReporter`, `MockitoExtension`, entre outras. Essas extensões oferecem funcionalidades adicionais que podem ser úteis durante a execução dos testes.
+
+Em resumo, a anotação `@ExtendWith` é usada para associar extensões aos métodos de teste, permitindo uma modularização e reutilização eficientes de código que afeta o comportamento dos testes.
+
+> [retornar](#annottations) para o topo da página
+
+## Mockito
+
+### `@InjectMocks`
+
+A anotação `@InjectMocks` é parte do framework de mocking Mockito em Java. Ela é usada em conjunto com a injeção de dependência para injetar automaticamente as dependências marcadas como `@Mock` ou `@Spy` em um objeto que está sendo testado.
+
+Aqui estão alguns pontos-chave sobre a anotação `@InjectMocks`:
+
+1. **Injeção de Dependência Automática:**
+   - A anotação `@InjectMocks` é usada para injetar automaticamente as dependências mockadas (marcadas com `@Mock` ou `@Spy`) em um objeto que está sendo testado. Isso é particularmente útil para evitar a necessidade de criar manualmente instâncias de objetos mockados e configurar as dependências.
+
+2. **Uso em Testes Unitários:**
+   - Geralmente, você usará `@InjectMocks` em classes de teste unitário para injetar mocks ou espiões nas dependências da classe que está sendo testada.
+
+3. **Exemplo de Uso Básico:**
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import org.mockito.InjectMocks;
+   import org.mockito.Mock;
+
+   import static org.mockito.Mockito.verify;
+   import static org.mockito.Mockito.when;
+   import org.mockito.junit.jupiter.MockitoExtension;
+   import org.junit.jupiter.api.extension.ExtendWith;
+
+   @ExtendWith(MockitoExtension.class)
+   public class MeuTeste {
+
+       @Mock
+       private Dependencia dependenciaMock;
+
+       @InjectMocks
+       private ObjetoSobTeste objetoSobTeste;
+
+       @Test
+       public void meuMetodoDeTeste() {
+           // Configuração do comportamento do mock
+           when(dependenciaMock.metodoDoMock()).thenReturn("Algo");
+
+           // Chama o método que está sendo testado
+           objetoSobTeste.executarAlgumaLogica();
+
+           // Verifica se o método do mock foi chamado
+           verify(dependenciaMock).metodoDoMock();
+       }
+   }
+   ```
+
+   Neste exemplo, `dependenciaMock` é um mock de uma dependência, e `objetoSobTeste` é o objeto que está sendo testado. A anotação `@InjectMocks` injeta automaticamente `dependenciaMock` em `objetoSobTeste`.
+
+4. **Considerações:**
+   - É importante notar que `@InjectMocks` tenta injetar mocks nas propriedades da classe de teste. Se a injeção não for bem-sucedida (por exemplo, devido à falta de setters correspondentes), o Mockito pode lançar uma exceção.
+
+5. **Compatibilidade com JUnit 5:**
+   - A presença de `@ExtendWith(MockitoExtension.class)` indica que estamos usando o suporte do Mockito para JUnit 5. Certifique-se de que você tenha a dependência correta do Mockito no seu projeto para habilitar essa extensão.
+
+> [retornar](#annottations) para o topo da página
+
+### `@Mock`
+
+A anotação `@Mock` faz parte do framework de mocking Mockito em Java. Ela é usada para criar objetos simulados (mocks) de classes ou interfaces. Esses mocks são usados em testes para isolar a unidade de código que está sendo testada, substituindo as dependências reais por comportamentos simulados controlados pelo teste.
+
+Aqui estão alguns pontos-chave sobre a anotação `@Mock`:
+
+1. **Criação de Mocks:**
+   - A anotação `@Mock` é usada para criar um mock de uma classe ou interface. O Mockito cria automaticamente uma instância simulada do tipo da classe ou interface marcada com `@Mock`.
+
+2. **Uso em Testes:**
+   - Geralmente, você usará `@Mock` em classes de teste para substituir as dependências reais por mocks controlados pelo teste. Isso ajuda a isolar a unidade de código que está sendo testada, focando apenas no comportamento da unidade de código em questão.
+
+3. **Exemplo de Uso Básico:**
+
+   ```java
+   import org.junit.jupiter.api.Test;
+   import org.mockito.Mock;
+
+   import static org.mockito.Mockito.when;
+   import static org.junit.jupiter.api.Assertions.assertEquals;
+
+   public class MeuTeste {
+
+       @Mock
+       private MinhaClasse minhaClasseMock;
+
+       @Test
+       public void meuMetodoDeTeste() {
+           // Configuração do comportamento do mock
+           when(minhaClasseMock.metodoDoMock()).thenReturn("Algo");
+
+           // Chama o método que está sendo testado
+           String resultado = minhaClasseMock.metodoDoMock();
+
+           // Verifica se o método do mock foi chamado
+           assertEquals("Algo", resultado);
+       }
+   }
+   ```
+
+   Neste exemplo, `minhaClasseMock` é um mock da classe `MinhaClasse`. O comportamento do método `metodoDoMock` é configurado para retornar "Algo". No teste, verifica-se se o método do mock é chamado conforme esperado.
+
+4. **Considerações:**
+   - Os mocks geralmente são usados para isolar o código em teste de suas dependências externas, permitindo que o teste se concentre em um aspecto específico do comportamento do código.
+
+5. **Compatibilidade com JUnit 5:**
+   - O exemplo acima é para JUnit 5, mas o Mockito também é compatível com JUnit 4. Certifique-se de incluir as dependências apropriadas no seu projeto para usar o Mockito em conjunto com seu framework de teste preferido.
 
 > [retornar](#annottations) para o topo da página
 >
