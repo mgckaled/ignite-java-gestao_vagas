@@ -22,6 +22,8 @@
     - [`@Test`](#test)
     - [`@DisplayName`](#displayname)
     - [`@ExtendWith`](#extendwith)
+    - [`@Before` e `@BeforeEach`](#before-e-beforeeach)
+    - [`@After` e `@AfterEach`](#after-e-aftereach)
   - [Mockito](#mockito)
     - [`@InjectMocks`](#injectmocks)
     - [`@Mock`](#mock)
@@ -481,6 +483,134 @@ Aqui estão alguns pontos importantes sobre a anotação `@ExtendWith`:
    - O JUnit Jupiter fornece algumas extensões padrão, como `TestInfo`, `TestReporter`, `MockitoExtension`, entre outras. Essas extensões oferecem funcionalidades adicionais que podem ser úteis durante a execução dos testes.
 
 Em resumo, a anotação `@ExtendWith` é usada para associar extensões aos métodos de teste, permitindo uma modularização e reutilização eficientes de código que afeta o comportamento dos testes.
+
+> [retornar](#annottations) para o topo da página
+
+### `@Before` e `@BeforeEach`
+
+A anotação `@Before` faz parte do framework de teste JUnit em Java. No entanto, a partir do JUnit 5 (JUnit Jupiter), a anotação `@Before` foi substituída por `@BeforeEach`. A função principal de ambas as anotações é marcar um método para ser executado antes de cada método de teste dentro da classe de teste.
+
+Aqui estão alguns pontos-chave sobre a anotação `@Before` e sua substituta `@BeforeEach`:
+
+1. **Inicialização Pré-Teste:**
+   - O método marcado com `@Before` (ou `@BeforeEach` no JUnit 5) é executado antes de cada método de teste na classe de teste. Ele é comumente usado para realizar a inicialização necessária, como a criação de objetos ou a configuração de condições iniciais.
+
+2. **Diferenças entre `@Before` e `@BeforeEach`:**
+   - No JUnit 4 (e versões anteriores), a anotação usada era `@Before`. No entanto, no JUnit 5, para melhorar a clareza e consistência, a anotação foi renomeada para `@BeforeEach`. Portanto, se você estiver usando o JUnit 5, é recomendável usar `@BeforeEach` para indicar a inicialização pré-teste.
+
+3. **Exemplo de Uso (JUnit 4):**
+
+   ```java
+   import org.junit.Before;
+   import org.junit.Test;
+
+   public class MeuTeste {
+
+       @Before
+       public void configurar() {
+           // Código de inicialização pré-teste
+       }
+
+       @Test
+       public void meuMetodoDeTeste1() {
+           // Lógica do primeiro teste
+       }
+
+       @Test
+       public void meuMetodoDeTeste2() {
+           // Lógica do segundo teste
+       }
+   }
+   ```
+
+4. **Exemplo de Uso (JUnit 5):**
+
+   ```java
+   import org.junit.jupiter.api.BeforeEach;
+   import org.junit.jupiter.api.Test;
+
+   public class MeuTeste {
+
+       @BeforeEach
+       public void configurar() {
+           // Código de inicialização pré-teste
+       }
+
+       @Test
+       public void meuMetodoDeTeste1() {
+           // Lógica do primeiro teste
+       }
+
+       @Test
+       public void meuMetodoDeTeste2() {
+           // Lógica do segundo teste
+       }
+   }
+   ```
+
+5. **Múltiplos Métodos `@BeforeEach` (JUnit 5):**
+   - No JUnit 5, você pode ter vários métodos marcados com `@BeforeEach` dentro da mesma classe de teste. Todos esses métodos serão executados antes de cada método de teste na ordem em que são definidos.
+
+Em resumo, `@Before` (JUnit 4) ou `@BeforeEach` (JUnit 5) são usados para executar código de inicialização antes de cada método de teste em uma classe de teste. O uso do JUnit 4 ou JUnit 5 determina qual anotação deve ser utilizada.
+
+> [retornar](#annottations) para o topo da página
+
+### `@After` e `@AfterEach`
+
+A anotação `@After` faz parte do framework de teste JUnit em Java. Essa anotação é usada para marcar um método que deve ser executado após cada método de teste na classe de teste. Sua principal função é permitir a realização de tarefas de limpeza ou liberação de recursos após a execução de cada teste.
+
+Aqui estão alguns pontos-chave sobre a anotação `@After`:
+
+1. **Tarefas de Limpeza Pós-Teste:**
+   - O método marcado com `@After` é executado após cada método de teste. Ele é comumente usado para realizar tarefas de limpeza, como a liberação de recursos, fechamento de conexões, ou qualquer outra ação necessária após a execução de um teste.
+
+2. **Exemplo de Uso (JUnit 4):**
+
+   ```java
+   import org.junit.After;
+   import org.junit.Test;
+
+   public class MeuTeste {
+
+       @Test
+       public void meuMetodoDeTeste() {
+           // Lógica do teste
+       }
+
+       @After
+       public void limparRecursos() {
+           // Código de limpeza pós-teste
+       }
+   }
+   ```
+
+3. **Exemplo de Uso (JUnit 5):**
+
+   ```java
+   import org.junit.jupiter.api.AfterEach;
+   import org.junit.jupiter.api.Test;
+
+   public class MeuTeste {
+
+       @Test
+       public void meuMetodoDeTeste() {
+           // Lógica do teste
+       }
+
+       @AfterEach
+       public void limparRecursos() {
+           // Código de limpeza pós-teste
+       }
+   }
+   ```
+
+4. **Diferenças entre `@After` e `@AfterEach`:**
+   - No JUnit 4, a anotação usada é `@After`, enquanto no JUnit 5, a anotação correspondente é `@AfterEach`. A mudança no nome foi feita para melhorar a clareza e consistência, seguindo a mesma lógica da transição de `@Before` para `@BeforeEach`.
+
+5. **Múltiplos Métodos `@AfterEach` (JUnit 5):**
+   - Assim como `@BeforeEach`, no JUnit 5, você pode ter vários métodos marcados com `@AfterEach` dentro da mesma classe de teste. Todos esses métodos serão executados após cada método de teste na ordem em que são definidos.
+
+Em resumo, `@After` (JUnit 4) ou `@AfterEach` (JUnit 5) são usados para executar código de limpeza após a execução de cada método de teste em uma classe de teste. O uso do JUnit 4 ou JUnit 5 determina qual anotação deve ser utilizada.
 
 > [retornar](#annottations) para o topo da página
 
