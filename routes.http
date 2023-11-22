@@ -1,5 +1,9 @@
-### Post: create candidate
-POST http://localhost:8080/candidate/
+# variáveis
+@port_url = http://localhost:8080
+@candidate_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwic3ViIjoiNmY1MjA4NmEtNjY4NC00MWEzLWI2ZTctMDkxZDdiYjIyN2Q1Iiwicm9sZXMiOlsiQ0FORElEQVRFIl0sImV4cCI6MTcwMDY3OTYzM30.32gL_Gm2v1UuobpX4K1UMkvw4RAz9ol98HZmvYwaBOQ
+@company_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNzAwNjc5NTU3LCJzdWIiOiIzMzZlNjM1ZS0wOTE4LTQ4YzItYjdiYi1iM2JhMjFhMWRmZDAiLCJyb2xlcyI6WyJDT01QQU5ZIl19.cVNH5UjOWhLL_lhTRD1pUzE-0uc7e2RIsUXVl4Y6IgA
+###
+POST {{port_url}}/candidate/
 Content-Type: application/json
 
 {
@@ -20,10 +24,10 @@ expires: 0
 x-frame-options: DENY
 content-type: text/plain;charset=UTF-8
 content-length: 20
-date: Tue, 21 Nov 2023 22:50:11 GMT
+date: Wed, 22 Nov 2023 18:50:30 GMT
 connection: close
 ###
-POST http://localhost:8080/candidate/auth
+POST {{port_url}}/candidate/auth
 Content-Type: application/json
 
 {
@@ -40,18 +44,19 @@ expires: 0
 x-frame-options: DENY
 content-type: application/json
 transfer-encoding: chunked
-date: Tue, 21 Nov 2023 22:50:14 GMT
+date: Wed, 22 Nov 2023 18:50:33 GMT
 connection: close
 ###
-POST http://localhost:8080/candidate/job/apply
+POST {{port_url}}/candidate/job/apply
 Content-Type: application/json
+Authorization: Bearer {{candidate_token}}
 
 {
   "username": "mgck.dev",
   "password": "12345@12345"
 }
 
-HTTP/1.1 403  - Forbidden
+HTTP/1.1 401  - Unauthorized
 x-content-type-options: nosniff
 x-xss-protection: 0
 cache-control: no-cache, no-store, max-age=0, must-revalidate
@@ -59,11 +64,11 @@ pragma: no-cache
 expires: 0
 x-frame-options: DENY
 content-length: 0
-date: Tue, 21 Nov 2023 22:45:14 GMT
+date: Wed, 22 Nov 2023 18:50:57 GMT
 connection: close
 ###
-GET http://localhost:8080/candidate/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwic3ViIjoiNmY1MjA4NmEtNjY4NC00MWEzLWI2ZTctMDkxZDdiYjIyN2Q1Iiwicm9sZXMiOlsiQ0FORElEQVRFIl0sImV4cCI6MTcwMDYwNzYxNH0.Vka9CEbA6djspleKdcSt08SOn5e7iaZjfHV2IqIc4Zc
+GET {{port_url}}/candidate/
+Authorization: Bearer {{candidate_token}}
 
 HTTP/1.1 403  - Forbidden
 accept: application/json, application/*+json
@@ -74,10 +79,10 @@ pragma: no-cache
 expires: 0
 x-frame-options: DENY
 content-length: 0
-date: Tue, 21 Nov 2023 22:50:50 GMT
+date: Wed, 22 Nov 2023 18:54:08 GMT
 connection: close
 ###
-POST http://localhost:8080/company/
+POST {{port_url}}/company/
 Content-Type: application/json
 
 {
@@ -98,11 +103,10 @@ expires: 0
 x-frame-options: DENY
 content-type: text/plain;charset=UTF-8
 content-length: 20
-date: Tue, 21 Nov 2023 22:50:55 GMT
+date: Wed, 22 Nov 2023 18:52:04 GMT
 connection: close
 ###
-
-POST http://localhost:8080/company/auth
+POST {{port_url}}/company/auth
 Content-Type: application/json 
 
 {
@@ -119,13 +123,13 @@ expires: 0
 x-frame-options: DENY
 content-type: application/json
 transfer-encoding: chunked
-date: Tue, 21 Nov 2023 22:52:30 GMT
+date: Wed, 22 Nov 2023 18:49:51 GMT
 connection: close
 ###
-POST http://localhost:8080/company/job/
+POST {{port_url}}/company/job/
 Content-Type: application/json
 accept: */*
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzIiwiZXhwIjoxNzAwNjA3NjYxLCJzdWIiOiIzMzZlNjM1ZS0wOTE4LTQ4YzItYjdiYi1iM2JhMjFhMWRmZDAiLCJyb2xlcyI6WyJDT01QQU5ZIl19.91o-t9hmX_UiEbEUTmIxam25MkHR5zubmMUuvQGahX0
+Authorization: Bearer {{company_token }}
 
 { 
   "description": "Vaga para desenvolvedor Java que deseja trabalhar com Spring Boot",
@@ -133,13 +137,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYXZhZ2FzI
   "level": "JUNIOR"
 }
 
-HTTP/1.1 403  - Forbidden
+HTTP/1.1 200  - OK
 x-content-type-options: nosniff
 x-xss-protection: 0
 cache-control: no-cache, no-store, max-age=0, must-revalidate
 pragma: no-cache
 expires: 0
 x-frame-options: DENY
-content-length: 0
-date: Tue, 21 Nov 2023 22:52:26 GMT
+content-type: application/json
+transfer-encoding: chunked
+date: Wed, 22 Nov 2023 18:49:55 GMT
 connection: close
