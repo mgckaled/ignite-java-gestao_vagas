@@ -15,6 +15,8 @@
   - [`postgresql`](#postgresql)
   - [`lombok`](#lombok)
   - [`java-jwt`](#java-jwt)
+  - [`JUinit`](#juinit)
+  - [`H2 Database`](#h2-database)
 
 ## `spring-boot-starter-web`
 
@@ -244,6 +246,81 @@ A biblioteca "java-jwt" permite trabalhar com tokens JWT em aplicativos Java de 
 É importante lembrar que a segurança de aplicativos que usam tokens JWT é altamente dependente da implementação correta e segura da lógica de autenticação e autorização. Além disso, a proteção adequada das chaves secretas e a gestão de tokens são essenciais para garantir a segurança do sistema.
 
 Em resumo, a biblioteca "java-jwt" é uma ferramenta valiosa para trabalhar com tokens JWT em aplicativos Java, facilitando a criação, validação e manipulação de tokens JWT, o que é comum em cenários de autenticação e autorização em sistemas distribuídos.
+
+> [retornar](#dependencies) para o topo da página
+
+## `JUinit`
+
+JUnit é um framework de teste para a linguagem de programação Java. Ele fornece um conjunto de anotações e métodos para facilitar a escrita e execução de testes unitários, que são testes destinados a verificar se partes específicas do código estão funcionando conforme o esperado.
+
+Aqui estão alguns aspectos principais do JUnit:
+
+1. **Anotações:**
+   - JUnit utiliza anotações Java para identificar métodos que devem ser executados como testes. Algumas das anotações mais comuns incluem:
+     - `@Test`: Identifica que o método é um teste.
+     - `@Before`: Indica que o método deve ser executado antes de cada teste.
+     - `@After`: Indica que o método deve ser executado após cada teste.
+     - `@BeforeClass`: Indica que o método deve ser executado antes de todos os testes na classe.
+     - `@AfterClass`: Indica que o método deve ser executado após todos os testes na classe.
+
+2. **Assertions:**
+   - JUnit fornece um conjunto de métodos de assert que são usados nos testes para verificar se as condições esperadas são verdadeiras. Alguns exemplos incluem `assertEquals`, `assertTrue`, `assertFalse`, etc.
+
+3. **Test Runners:**
+   - Os testes em JUnit são executados por meio de "test runners", que são classes que orquestram a execução dos testes. JUnit fornece um runner padrão (`BlockJUnit4ClassRunner`), mas também suporta a criação de runners personalizados.
+
+4. **Suite de Teste:**
+   - JUnit permite agrupar testes em suites, que são classes que contêm métodos de teste, mas também podem agrupar outros casos de teste ou suites. Isso é útil para organizar e executar conjuntos específicos de testes.
+
+5. **Integração com IDEs:**
+   - JUnit é amplamente suportado por ambientes de desenvolvimento integrado (IDEs) como Eclipse, IntelliJ IDEA e NetBeans. Isso facilita a execução e visualização de resultados de testes diretamente no ambiente de desenvolvimento.
+
+6. **Parâmetros em Testes:**
+   - A partir da versão 4, o JUnit suporta a passagem de parâmetros para métodos de teste, o que permite executar o mesmo teste com diferentes conjuntos de dados.
+
+7. **Extensibilidade:**
+   - JUnit é projetado para ser extensível, permitindo que desenvolvedores criem extensões personalizadas para atender às necessidades específicas de seus projetos.
+
+JUnit é uma ferramenta fundamental para a prática de Desenvolvimento Orientado a Testes (TDD) e é amplamente utilizado na comunidade Java para garantir a qualidade do software por meio da automação de testes.
+
+> [retornar](#dependencies) para o topo da página
+
+## `H2 Database`
+
+O H2 Database é um sistema de gerenciamento de banco de dados relacional escrito em Java. Ele é conhecido por ser leve, rápido e oferecer a capacidade de operar em modos de uso em memória (in-memory), bem como em modos de uso persistente em disco. Algumas características e pontos notáveis do H2 Database incluem:
+
+1. **Java-Based:**
+   - O H2 é desenvolvido em Java, o que significa que é independente de plataforma e pode ser facilmente integrado a aplicativos Java.
+
+2. **Em Memória e Persistente:**
+   - Pode ser utilizado tanto como um banco de dados em memória (os dados são armazenados na RAM e não persistem após o encerramento da aplicação) quanto como um banco de dados persistente (onde os dados são armazenados em disco e podem ser recuperados entre execuções).
+
+3. **Rápido e Eficiente:**
+   - O H2 é conhecido por sua rapidez e eficiência, o que o torna uma escolha popular para cenários de teste e desenvolvimento.
+
+4. **Modo Servidor:**
+   - Além do modo incorporado (embedded), o H2 pode ser executado como um servidor autônomo, permitindo que aplicativos cliente se conectem a ele por meio de JDBC (Java Database Connectivity) ou outros protocolos.
+
+5. **Suporte a SQL:**
+   - Oferece suporte a uma ampla variedade de comandos SQL padrão, proporcionando aos desenvolvedores uma interface familiar para interagir com o banco de dados.
+
+6. **Suporte a Transações:**
+   - Fornece suporte a transações ACID (Atomicidade, Consistência, Isolamento e Durabilidade), garantindo a integridade dos dados.
+
+7. **Conformidade com Padrões JDBC:**
+   - Sendo compatível com JDBC, o H2 pode ser facilmente integrado a aplicativos Java existentes que fazem uso desse padrão.
+
+8. **Recursos Avançados:**
+   - Inclui recursos avançados, como suporte a gatilhos (triggers), stored procedures, e suporte a índices.
+
+9. **Console Web:**
+   - Possui uma console web que permite a administração e visualização dos dados de maneira gráfica, facilitando o gerenciamento durante o desenvolvimento e testes.
+
+10. **Compatibilidade com Modo MySQL e PostgreSQL:**
+
+- Oferece modos de compatibilidade com MySQL e PostgreSQL, permitindo que os usuários migrem para o H2 com mais facilidade.
+
+O H2 é frequentemente utilizado em ambientes de desenvolvimento e teste, especialmente em situações em que a facilidade de configuração, a velocidade e a simplicidade são cruciais. No entanto, devido à sua natureza leve, também pode ser utilizado em ambientes de produção, dependendo dos requisitos específicos do projeto.
 
 > [retornar](#dependencies) para o topo da página
 >

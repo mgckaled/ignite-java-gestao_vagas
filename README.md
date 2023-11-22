@@ -54,10 +54,12 @@ Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Moc
 - [`PostgreSQL`](https://www.postgresql.org/)
 - [`java-jwt`](https://github.com/auth0/java-jwt)
 - [`Swagger`](https://swagger.io/)
+- [`JUinit`](https://junit.org/junit4/)
+- [`H2 Database`](https://www.h2database.com/html/main.html)
 
 > Mais informações sobre [dependências do projeto](./.github/docs/a_dependencies.md).
 >
-> Informações sobre as principais [notações](./.github/docs/b_annotations.md).
+> Informações sobre as principais [anotações](./.github/docs/b_annotations.md).
 >
 > Análise interpretativa e lógica do [código](./.github/docs/c_code-analysis.md)
 
