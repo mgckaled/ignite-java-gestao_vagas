@@ -10,14 +10,31 @@
     - [`@SpringBootApplication`](#springbootapplication)
     - [`@RestController`](#restcontroller)
     - [`@RequestMapping`](#requestmapping)
+    - [`@RequestBody`](#requestbody)
     - [`@Autowired`](#autowired)
     - [`@Component`](#component)
     - [`@Service`](#service)
     - [`@Value`](#value)
     - [`@Configuration` e `@Bean`](#configuration-e-bean)
+    - [`@ControllerAdvice`](#controlleradvice)
+    - [`ExceptionHandler`](#exceptionhandler)
   - [Lombok](#lombok)
     - [`@Data`](#data)
+    - [`@AllArgsConstructor`](#allargsconstructor)
     - [`@Builder`](#builder)
+  - [Jakarta](#jakarta)
+    - [`@Entity`](#entity)
+    - [Persistense](#persistense)
+    - [`@Valid`](#valid)
+    - [Constraints](#constraints)
+  - [Swagger](#swagger)
+    - [`@Operation`](#operation)
+    - [`@ArraySchema`](#arrayschema)
+    - [`@Content`](#content)
+    - [`@Schema`](#schema)
+    - [`@ApiResponses`](#apiresponses)
+    - [`@SecurityRequirement`](#securityrequirement)
+    - [`@Tag`](#tag)
   - [Anotações de Testes](#anotações-de-testes)
     - [`@Test`](#test)
     - [`@DisplayName`](#displayname)
@@ -136,6 +153,57 @@ Neste exemplo, a classe `ExemploController` é marcada com `@RestController` e `
 - O método `criarRecurso` é mapeado para a URL `/api/outrarecurso` e só será chamado quando uma solicitação HTTP POST for feita para essa URL. Além disso, ele retorna uma resposta de status HTTP 201 (CREATED) com uma mensagem.
 
 `@RequestMapping` fornece muitas outras opções para personalizar mapeamentos de URL, como a inclusão de parâmetros de consulta, cabeçalhos personalizados e tipos de mídia aceitos. É uma ferramenta flexível para criar controladores em uma aplicação Spring Boot e manipular solicitações HTTP de maneira eficaz.
+
+> [retornar](#annottations) para o topo da página
+
+### `@RequestBody`
+
+A anotação `@RequestBody` faz parte do framework Spring e é usada em métodos de controladores (controllers) do Spring MVC para indicar que um determinado parâmetro do método deve ser vinculado ao corpo (body) da solicitação HTTP. Essa anotação é comumente usada em métodos que manipulam solicitações POST, PUT ou outras operações que enviam dados no corpo da solicitação.
+
+Principais características da anotação `@RequestBody`:
+
+1. **Vinculação de Dados do Corpo da Solicitação:**
+   - A anotação `@RequestBody` é usada para vincular os dados do corpo da solicitação (payload) a um parâmetro do método. Isso é particularmente útil quando você está recebendo dados JSON, XML ou outro formato no corpo da solicitação HTTP.
+
+2. **Deserialização Automática:**
+   - O Spring MVC automaticamente deserializa os dados do corpo da solicitação para o tipo do parâmetro anotado com `@RequestBody`. A deserialização depende dos conversores de mensagens configurados no aplicativo, como o Jackson para JSON ou JAXB para XML.
+
+3. **Usado em Métodos de Manipulação de Requisições:**
+   - A anotação `@RequestBody` é geralmente usada em métodos de controladores que respondem a solicitações HTTP, especialmente métodos que tratam solicitações POST ou PUT, onde os dados são enviados no corpo da solicitação.
+
+Exemplo de uso:
+
+```java
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MeuControlador {
+
+    @PostMapping("/exemplo")
+    public String exemploDePost(@RequestBody DadosRequisicao dados) {
+        // Lógica para processar os dados recebidos no corpo da solicitação
+        return "Dados recebidos com sucesso: " + dados.toString();
+    }
+}
+```
+
+Neste exemplo, o método `exemploDePost` recebe dados do corpo da solicitação através do parâmetro `dados`, que é anotado com `@RequestBody`. O Spring MVC cuida da desserialização automática dos dados do corpo da solicitação para o tipo `DadosRequisicao`.
+
+A classe `DadosRequisicao` poderia ser algo como:
+
+```java
+public class DadosRequisicao {
+
+    private String campo1;
+    private int campo2;
+
+    // Getters e Setters
+}
+```
+
+A anotação `@RequestBody` é fundamental para integrar dados recebidos no corpo da solicitação com métodos de controladores no Spring MVC.
 
 > [retornar](#annottations) para o topo da página
 
@@ -311,6 +379,88 @@ Em resumo, `@Configuration` é usada para marcar classes que contêm métodos `@
 
 > [retornar](#annottations) para o topo da página
 
+### `@ControllerAdvice`
+
+A anotação `@ControllerAdvice` faz parte do framework Spring, mais especificamente do módulo Spring MVC. Ela é usada para definir classes globais que fornecem manipulação centralizada de exceções e vinculações de dados para os controladores. Essas classes podem conter métodos anotados com `@ExceptionHandler`, `@InitBinder` e `@ModelAttribute`, que serão aplicados globalmente a todos os controladores.
+
+Aqui estão as principais funcionalidades associadas à anotação `@ControllerAdvice`:
+
+1. **Tratamento Global de Exceções (`@ExceptionHandler`):**
+   - Métodos anotados com `@ExceptionHandler` em classes marcadas com `@ControllerAdvice` podem ser usados para tratar exceções de maneira centralizada. Esses métodos capturam exceções lançadas por qualquer controlador da aplicação e definem como lidar com elas.
+
+2. **Customização do Vinculador de Dados (`@InitBinder`):**
+   - Métodos anotados com `@InitBinder` são usados para personalizar o processo de vinculação de dados no Spring MVC. Eles permitem configurar propriedades personalizadas do vinculador de dados para todos os controladores da aplicação.
+
+3. **Atributos Globais (`@ModelAttribute`):**
+   - Métodos anotados com `@ModelAttribute` em uma classe `@ControllerAdvice` são usados para adicionar atributos globais a todos os modelos que retornam para as visualizações. Esses atributos são disponibilizados para todos os métodos de todos os controladores.
+
+4. **Escopo Global:**
+   - A anotação `@ControllerAdvice` permite que você defina manipuladores globais para diferentes aspectos do ciclo de vida de uma solicitação, proporcionando uma maneira centralizada de gerenciar a lógica comum em toda a aplicação.
+
+Aqui está um exemplo básico de uso da anotação `@ControllerAdvice`:
+
+```java
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public String handleException(Exception e) {
+        // Lógica para lidar com a exceção globalmente
+        return "error"; // Nome da página de erro
+    }
+}
+```
+
+Neste exemplo, o método `handleException` será chamado sempre que ocorrer uma exceção do tipo `Exception` em qualquer controlador da aplicação, permitindo um tratamento centralizado da exceção.
+
+Em resumo, `@ControllerAdvice` é uma anotação poderosa no Spring MVC que oferece uma maneira eficaz de centralizar o tratamento de exceções, personalizar o vinculador de dados e fornecer atributos globais para modelos em toda a aplicação.
+
+> [retornar](#annottations) para o topo da página
+
+### `ExceptionHandler`
+
+A anotação `@ControllerAdvice` faz parte do framework Spring, mais especificamente do módulo Spring MVC. Ela é usada para definir classes globais que fornecem manipulação centralizada de exceções e vinculações de dados para os controladores. Essas classes podem conter métodos anotados com `@ExceptionHandler`, `@InitBinder` e `@ModelAttribute`, que serão aplicados globalmente a todos os controladores.
+
+Aqui estão as principais funcionalidades associadas à anotação `@ControllerAdvice`:
+
+1. **Tratamento Global de Exceções (`@ExceptionHandler`):**
+   - Métodos anotados com `@ExceptionHandler` em classes marcadas com `@ControllerAdvice` podem ser usados para tratar exceções de maneira centralizada. Esses métodos capturam exceções lançadas por qualquer controlador da aplicação e definem como lidar com elas.
+
+2. **Customização do Vinculador de Dados (`@InitBinder`):**
+   - Métodos anotados com `@InitBinder` são usados para personalizar o processo de vinculação de dados no Spring MVC. Eles permitem configurar propriedades personalizadas do vinculador de dados para todos os controladores da aplicação.
+
+3. **Atributos Globais (`@ModelAttribute`):**
+   - Métodos anotados com `@ModelAttribute` em uma classe `@ControllerAdvice` são usados para adicionar atributos globais a todos os modelos que retornam para as visualizações. Esses atributos são disponibilizados para todos os métodos de todos os controladores.
+
+4. **Escopo Global:**
+   - A anotação `@ControllerAdvice` permite que você defina manipuladores globais para diferentes aspectos do ciclo de vida de uma solicitação, proporcionando uma maneira centralizada de gerenciar a lógica comum em toda a aplicação.
+
+Aqui está um exemplo básico de uso da anotação `@ControllerAdvice`:
+
+```java
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class GlobalExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public String handleException(Exception e) {
+        // Lógica para lidar com a exceção globalmente
+        return "error"; // Nome da página de erro
+    }
+}
+```
+
+Neste exemplo, o método `handleException` será chamado sempre que ocorrer uma exceção do tipo `Exception` em qualquer controlador da aplicação, permitindo um tratamento centralizado da exceção.
+
+Em resumo, `@ControllerAdvice` é uma anotação poderosa no Spring MVC que oferece uma maneira eficaz de centralizar o tratamento de exceções, personalizar o vinculador de dados e fornecer atributos globais para modelos em toda a aplicação.
+
+> [retornar](#annottations) para o topo da página
+
 ## Lombok
 
 ### `@Data`
@@ -332,6 +482,47 @@ public class Exemplo {
 ```
 
 Neste exemplo, a anotação `@Data` está sendo usada na classe `Exemplo`. O Lombok irá automaticamente gerar os métodos `toString()`, `equals()`, `hashCode()`, bem como os getters e setters para as propriedades `nome` e `idade`. Isso reduz a quantidade de código que você precisa escrever manualmente, melhorando a legibilidade e a manutenção do código.
+
+> [retornar](#annottations) para o topo da página
+
+### `@AllArgsConstructor`
+
+A anotação `@AllArgsConstructor` faz parte do projeto Lombok em Java. Lombok é uma biblioteca que ajuda a reduzir a verbosidade do código Java, automatizando a geração de métodos comuns, como construtores, getters, setters e métodos `equals` e `hashCode`.
+
+A anotação `@AllArgsConstructor` é usada para gerar automaticamente um construtor que aceita todos os campos da classe como parâmetros. Em outras palavras, ela cria um construtor que inicializa todos os atributos da classe com base nos parâmetros fornecidos, evitando a necessidade de escrever manualmente construtores extensos.
+
+Aqui está um exemplo de uso:
+
+```java
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class Exemplo {
+
+    private int numero;
+    private String texto;
+    private boolean flag;
+}
+```
+
+Com a anotação `@AllArgsConstructor`, o código acima é equivalente a escrever o seguinte construtor manualmente:
+
+```java
+public class Exemplo {
+
+    private int numero;
+    private String texto;
+    private boolean flag;
+
+    public Exemplo(int numero, String texto, boolean flag) {
+        this.numero = numero;
+        this.texto = texto;
+        this.flag = flag;
+    }
+}
+```
+
+Ao usar o Lombok com a anotação `@AllArgsConstructor`, você pode simplificar a criação de construtores, especialmente em classes com muitos atributos, tornando o código mais conciso e fácil de manter.
 
 > [retornar](#annottations) para o topo da página
 
@@ -371,6 +562,485 @@ public class ExemploBuilder {
 Neste exemplo, a anotação `@Builder` elimina a necessidade de escrever manualmente um construtor com diversos parâmetros e fornece um construtor de "construção" que simplifica a criação de instâncias da classe `ExemploBuilder`.
 
 Ao usar o padrão de construtor, você pode criar objetos de maneira mais legível e evitar construtores com muitos parâmetros, tornando seu código mais fácil de entender e manter.
+
+> [retornar](#annottations) para o topo da página
+
+## Jakarta
+
+### `@Entity`
+
+A anotação `@Entity` faz parte da especificação Jakarta Persistence (anteriormente Java Persistence API ou JPA) e é usada para marcar uma classe como uma entidade persistente. Em outras palavras, essa anotação indica que a classe está associada a uma tabela em um banco de dados relacional.
+
+Principais características da anotação `@Entity`:
+
+1. **Associação a uma Tabela:**
+   - A anotação `@Entity` associa a classe a uma tabela no banco de dados. Cada instância da classe representa uma linha nessa tabela.
+
+2. **Identificação da Classe como Entidade:**
+   - A presença da anotação `@Entity` indica ao provedor de persistência que a classe deve ser gerenciada pelo JPA, e os objetos dessa classe podem ser armazenados e recuperados de um banco de dados.
+
+3. **Mapeamento de Atributos para Colunas:**
+   - Atributos da classe são mapeados para colunas na tabela associada. Isso é geralmente feito usando outras anotações, como `@Id` para a chave primária, `@Column` para mapear colunas específicas, etc.
+
+Exemplo de uso:
+
+```java
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Column;
+
+@Entity
+public class Produto {
+
+    @Id
+    private Long id;
+
+    @Column(name = "nome_produto")
+    private String nome;
+
+    @Column
+    private double preco;
+
+    // Getters e Setters
+}
+```
+
+Neste exemplo, a classe `Produto` é marcada como uma entidade persistente usando a anotação `@Entity`. Os atributos `id`, `nome` e `preco` são mapeados para colunas na tabela associada. A anotação `@Id` é usada para indicar a chave primária.
+
+Ao utilizar a anotação `@Entity` e outras anotações relacionadas à persistência, você pode criar classes Java que são automaticamente mapeadas para tabelas de banco de dados, facilitando o uso de objetos Java para interagir com dados persistentes em um banco de dados relacional.
+
+> [retornar](#annottations) para o topo da página
+
+### Persistense
+
+As anotações `@Column`, `@GeneratedValue`, `@Id`, e `@ManyToOne` fazem parte da especificação Jakarta Persistence (anteriormente Java Persistence API ou JPA) e são usadas para mapear entidades e estabelecer relações entre elas em um banco de dados relacional.
+
+1. **`@Id` e `@GeneratedValue`:**
+   - A anotação `@Id` é usada para identificar a chave primária da entidade, e a anotação `@GeneratedValue` é usada para indicar a estratégia de geração de valores para essa chave primária.
+
+   ```java
+   import jakarta.persistence.Id;
+   import jakarta.persistence.GeneratedValue;
+   import jakarta.persistence.GenerationType;
+
+   public class Produto {
+
+       @Id
+       @GeneratedValue(strategy = GenerationType.IDENTITY)
+       private Long id;
+
+       // outros atributos, getters e setters
+   }
+   ```
+
+2. **`@Column`:**
+   - A anotação `@Column` é usada para mapear um atributo da classe para uma coluna específica no banco de dados. Você pode usar essa anotação para personalizar o nome da coluna, o tipo de dados, etc.
+
+   ```java
+   import jakarta.persistence.Column;
+
+   public class Produto {
+
+       @Column(name = "nome_produto", nullable = false)
+       private String nome;
+
+       // outros atributos, getters e setters
+   }
+   ```
+
+3. **`@ManyToOne` e `@JoinColumn`:**
+   - As anotações `@ManyToOne` e `@JoinColumn` são usadas para representar relacionamentos muitos-para-um entre entidades. Elas são usadas no lado "muitos" do relacionamento.
+
+   ```java
+   import jakarta.persistence.ManyToOne;
+   import jakarta.persistence.JoinColumn;
+
+   public class ItemPedido {
+
+       @ManyToOne
+       @JoinColumn(name = "produto_id", nullable = false)
+       private Produto produto;
+
+       // outros atributos, getters e setters
+   }
+   ```
+
+Essas anotações são fundamentais ao modelar a persistência de dados em um aplicativo Java usando JPA. Elas ajudam a definir como as entidades são mapeadas para tabelas do banco de dados e como os relacionamentos entre essas entidades são representados.
+
+> [retornar](#annottations) para o topo da página
+
+### `@Valid`
+
+A anotação `@Valid` em Jakarta EE (anteriormente Java EE) é utilizada para indicar que a validação do bean deve ser executada durante a execução de um método ou construtor.
+
+Essa anotação é geralmente usada em parâmetros de métodos ou construtores de CDI (Contexts and Dependency Injection) para garantir que a validação de bean seja realizada nos objetos passados como argumentos.
+
+Exemplo de uso:
+
+```java
+import jakarta.validation.Valid;
+
+public class ExemploService {
+
+    public void processarEntidade(@Valid Entidade entidade) {
+        // Lógica do serviço
+    }
+}
+```
+
+Neste exemplo, a anotação `@Valid` é aplicada ao parâmetro `entidade` no método `processarEntidade`. Isso indica que a validação de bean deve ser executada no objeto `Entidade` fornecido como argumento. Se houver violações de validação, uma exceção `ConstraintViolationException` será lançada.
+
+Essa anotação é parte da API de Validação do Bean (Bean Validation) e está relacionada à validação de dados em objetos Java. A validação de bean permite definir regras de validação declarativamente em classes de modelo e aplicá-las automaticamente durante a execução do código.
+
+É importante notar que o pacote `jakarta.validation` é usado em Jakarta EE, que é uma evolução do Java EE. Anteriormente, no Java EE, o pacote correspondente era `javax.validation`. As classes e anotações relacionadas à validação de bean são semelhantes entre esses dois contextos.
+
+> [retornar](#annottations) para o topo da página
+
+### Constraints
+
+As anotações `@Email`, `@NotBlank`, e `@Pattern` fazem parte da especificação Jakarta Bean Validation (anteriormente Bean Validation ou JSR 380) e são utilizadas para aplicar restrições de validação em campos de uma classe, normalmente associada a atributos de entidades ou objetos DTO (Data Transfer Object).
+
+1. **`@Email`:**
+   - A anotação `@Email` é usada para validar se um campo é um endereço de e-mail válido. Ela verifica se o valor fornecido segue o formato padrão de um endereço de e-mail.
+
+   ```java
+   import jakarta.validation.constraints.Email;
+
+   public class ExemploDTO {
+
+       @Email(message = "O formato do e-mail não é válido")
+       private String email;
+
+       // Getters e Setters
+   }
+   ```
+
+2. **`@NotBlank`:**
+   - A anotação `@NotBlank` valida se uma string não é nula e seu comprimento é maior que zero, ou seja, se ela contém algum caractere não em branco.
+
+   ```java
+   import jakarta.validation.constraints.NotBlank;
+
+   public class ExemploDTO {
+
+       @NotBlank(message = "O campo não pode estar em branco")
+       private String nome;
+
+       // Getters e Setters
+   }
+   ```
+
+3. **`@Pattern`:**
+   - A anotação `@Pattern` é usada para validar se um campo atende a um padrão específico definido por uma expressão regular.
+
+   ```java
+   import jakarta.validation.constraints.Pattern;
+
+   public class ExemploDTO {
+
+       @Pattern(regexp = "[0-9]{3}-[0-9]{2}-[0-9]{4}", message = "Formato do CPF inválido")
+       private String cpf;
+
+       // Getters e Setters
+   }
+   ```
+
+Essas anotações são poderosas ferramentas para garantir a integridade e validade dos dados em uma aplicação Java. Quando utilizadas, elas especificam as regras que os campos devem seguir, e o mecanismo de validação do Bean Validation as aplica automaticamente, lançando exceções caso as regras não sejam atendidas. Essas exceções podem ser capturadas e tratadas pela lógica da aplicação.
+
+## Swagger
+
+### `@Operation`
+
+A anotação `@Operation` faz parte da especificação OpenAPI (anteriormente conhecida como Swagger) versão 3 para documentação de APIs em Java. Essa anotação é usada para descrever as operações (métodos) disponíveis em um controlador ou classe de API, fornecendo informações detalhadas sobre essas operações para a geração automática de documentação.
+
+Principais características da anotação `@Operation`:
+
+1. **Descrição de Operação:**
+   - A anotação `@Operation` é usada para fornecer uma descrição detalhada de uma operação (método) em uma API. Isso inclui informações como o resumo da operação, descrição mais detalhada, tags associadas e outras propriedades.
+
+2. **Parâmetros e Respostas:**
+   - A anotação `@Operation` pode ser usada para descrever parâmetros de entrada, códigos de resposta e outros detalhes relacionados à operação. Isso ajuda na geração de documentação precisa e compreensível.
+
+3. **Agrupamento por Tags:**
+   - Você pode agrupar operações usando tags, fornecendo uma maneira de organizar e categorizar as operações na documentação.
+
+4. **Personalização da Documentação:**
+   - A anotação `@Operation` permite personalizar a documentação da API, tornando-a mais informativa e fácil de entender para os consumidores da API.
+
+Exemplo de uso:
+
+```java
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+
+public class ExemploControlador {
+
+    @Operation(
+        summary = "Endpoint para criar um novo recurso",
+        description = "Este endpoint cria um novo recurso com base nos dados fornecidos.",
+        tags = { "Recurso" }
+    )
+    @ApiResponses(
+        value = {
+            @ApiResponse(responseCode = "201", description = "Recurso criado com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+            @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+        }
+    )
+    @RequestBody(description = "Dados do recurso a ser criado")
+    public void criarRecurso() {
+        // Lógica de criação do recurso
+    }
+}
+```
+
+Neste exemplo, a anotação `@Operation` é usada para descrever a operação de criação de um recurso. Ela fornece um resumo, uma descrição mais detalhada e associa a operação à tag "Recurso". A anotação `@ApiResponses` descreve as possíveis respostas HTTP que a operação pode retornar, e `@RequestBody` fornece detalhes sobre os dados esperados no corpo da solicitação.
+
+Essas anotações são essenciais para documentar APIs de forma eficaz e gerar automaticamente documentação legível e compreensível usando ferramentas compatíveis com OpenAPI, como o Swagger UI.
+
+> [retornar](#annottations) para o topo da página
+
+### `@ArraySchema`
+
+A anotação `@ArraySchema` faz parte da especificação OpenAPI (anteriormente conhecida como Swagger) versão 3 em Java. Essa anotação é utilizada para descrever um esquema de array dentro do contexto de documentação de API, fornecendo informações sobre o array, como tipo de itens, tamanho mínimo e máximo, etc.
+
+Principais características da anotação `@ArraySchema`:
+
+1. **Tipo de Itens do Array:**
+   - A anotação `@ArraySchema` permite especificar o tipo de itens que o array contém. Isso é útil para a geração automática de documentação, onde é importante entender a estrutura dos dados em um array.
+
+2. **Tamanho Mínimo e Máximo:**
+   - Você pode definir o tamanho mínimo e máximo esperado do array usando as propriedades `minItems` e `maxItems`. Isso fornece informações sobre a validação esperada do tamanho do array.
+
+3. **Permitir Itens Nulos:**
+   - A propriedade `uniqueItems` permite especificar se os itens no array devem ser únicos.
+
+Exemplo de uso:
+
+```java
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public class ExemploDto {
+
+    @ArraySchema(
+        arraySchema = @Schema(
+            description = "Lista de itens",
+            minItems = 1,
+            maxItems = 10,
+            uniqueItems = true
+        ),
+        schema = @Schema(implementation = ItemDto.class)
+    )
+    private List<ItemDto> itens;
+
+    // Getters e Setters
+}
+```
+
+Neste exemplo, a anotação `@ArraySchema` é aplicada a um campo `itens` em uma classe chamada `ExemploDto`. O esquema do array é definido usando a anotação `@Schema` dentro de `@ArraySchema`. São fornecidas informações como descrição, tamanho mínimo e máximo e se os itens devem ser únicos.
+
+A classe `ItemDto` seria uma classe que representa o tipo de itens no array.
+
+Essa anotação é útil para descrever a estrutura e as características de arrays em sua API, facilitando a geração de documentação precisa e compreensível usando ferramentas compatíveis com OpenAPI, como o Swagger UI.
+
+> [retornar](#annottations) para o topo da página
+
+### `@Content`
+
+A anotação `@Content` faz parte da especificação OpenAPI (anteriormente conhecida como Swagger) versão 3 para documentação de APIs em Java. Ela é usada para descrever o conteúdo de uma resposta ou solicitação HTTP, incluindo os tipos de mídia (media types) suportados e os esquemas associados a esses tipos de mídia.
+
+Principais características da anotação `@Content`:
+
+1. **Especificação de Tipos de Mídia:**
+   - A anotação `@Content` é usada para especificar os tipos de mídia (media types) suportados para um determinado conteúdo. Isso inclui tipos como `application/json`, `application/xml`, etc.
+
+2. **Associação com Esquemas (`@Schema`):**
+   - A anotação `@Content` pode ser associada a esquemas (schemas) usando a anotação `@Schema`. Isso descreve a estrutura dos dados associados ao tipo de mídia.
+
+3. **Exemplos (`@Example`):**
+   - É possível incluir exemplos de dados associados ao conteúdo usando a anotação `@Example`. Isso fornece exemplos concretos que podem ajudar na compreensão do formato dos dados.
+
+Exemplo de uso:
+
+```java
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+
+public class RespostaDto {
+
+    @Content(
+        mediaType = "application/json",
+        schema = @Schema(implementation = RespostaDetalhadaDto.class),
+        examples = @ExampleObject(value = "{ \"id\": 123, \"nome\": \"Exemplo\" }")
+    )
+    private RespostaDetalhadaDto detalhes;
+
+    // Getters e Setters
+}
+```
+
+Neste exemplo, a anotação `@Content` é aplicada a um campo chamado `detalhes` em uma classe chamada `RespostaDto`. Ela especifica que o conteúdo da resposta é do tipo `application/json` e está associado ao esquema definido pela classe `RespostaDetalhadaDto`. Além disso, um exemplo JSON é fornecido usando a anotação `@ExampleObject`.
+
+A classe `RespostaDetalhadaDto` seria uma classe que representa a estrutura dos dados associados ao conteúdo.
+
+A anotação `@Content` é crucial para descrever detalhes sobre o conteúdo das respostas ou solicitações em uma API, o que é fundamental para a geração precisa de documentação usando ferramentas compatíveis com OpenAPI, como o Swagger UI.
+
+> [retornar](#annottations) para o topo da página
+
+### `@Schema`
+
+A anotação `@Schema` faz parte da especificação OpenAPI (anteriormente conhecida como Swagger) versão 3 em Java. Essa anotação é usada para descrever as propriedades e o comportamento de um esquema de dados, que pode representar um objeto, uma coleção, uma resposta ou qualquer outra estrutura de dados utilizada em uma API.
+
+Principais características da anotação `@Schema`:
+
+1. **Descrição do Esquema:**
+   - A anotação `@Schema` é usada para fornecer informações detalhadas sobre um esquema, incluindo a descrição geral do esquema.
+
+2. **Nome do Esquema:**
+   - Pode-se especificar o nome do esquema usando a propriedade `name`. Isso é útil para identificar o esquema quando usado em outras partes da documentação.
+
+3. **Tipo de Dados (`type`):**
+   - A propriedade `type` permite especificar o tipo de dados associado ao esquema, como "object", "array", "string", "integer", etc.
+
+4. **Formato (`format`):**
+   - A propriedade `format` é usada para fornecer informações adicionais sobre o formato dos dados, como "date", "date-time", "email", etc., dependendo do tipo de dados.
+
+5. **Exemplo (`example`):**
+   - A propriedade `example` permite fornecer um exemplo concreto dos dados associados ao esquema. Isso ajuda na compreensão do formato dos dados.
+
+Exemplo de uso:
+
+```java
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public class ExemploDto {
+
+    @Schema(description = "Identificador único", example = "123")
+    private Long id;
+
+    @Schema(description = "Nome do objeto", required = true)
+    private String nome;
+
+    @Schema(description = "Quantidade de itens", minimum = "0")
+    private int quantidade;
+
+    // Getters e Setters
+}
+```
+
+Neste exemplo, a anotação `@Schema` é aplicada a campos da classe `ExemploDto` para descrever propriedades específicas do esquema. O campo `id` é um exemplo de um identificador único, o campo `nome` é uma propriedade obrigatória e o campo `quantidade` tem um valor mínimo especificado.
+
+A anotação `@Schema` é fundamental para descrever detalhes sobre a estrutura dos dados em uma API, ajudando na geração precisa de documentação usando ferramentas compatíveis com OpenAPI, como o Swagger UI.
+
+> [retornar](#annottations) para o topo da página
+
+### `@ApiResponses`
+
+A anotação `@ApiResponses` faz parte da especificação OpenAPI (anteriormente conhecida como Swagger) versão 3 em Java. Ela é usada para agrupar várias anotações `@ApiResponse`, permitindo a descrição de respostas HTTP específicas para operações (métodos) em uma API.
+
+Principais características da anotação `@ApiResponses`:
+
+1. **Agrupamento de Respostas:**
+   - A anotação `@ApiResponses` é usada para agrupar várias anotações `@ApiResponse` sob uma única anotação, facilitando a organização e leitura do código.
+
+2. **Mapeamento de Códigos de Resposta:**
+   - Permite mapear códigos de resposta HTTP para métodos específicos de uma API. Cada `@ApiResponse` dentro de `@ApiResponses` pode especificar um código de resposta HTTP, uma descrição e detalhes adicionais, como referências a modelos ou exemplos.
+
+Exemplo de uso:
+
+```java
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+@ApiResponses({
+    @ApiResponse(responseCode = "200", description = "Operação bem-sucedida"),
+    @ApiResponse(responseCode = "400", description = "Requisição inválida"),
+    @ApiResponse(responseCode = "404", description = "Recurso não encontrado"),
+    @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
+})
+public class ExemploControlador {
+
+    // Código do método
+}
+```
+
+Neste exemplo, a anotação `@ApiResponses` é aplicada à classe `ExemploControlador`, agrupando várias anotações `@ApiResponse`. Cada `@ApiResponse` especifica um código de resposta HTTP e uma descrição correspondente.
+
+Essas anotações são fundamentais para descrever as possíveis respostas de uma operação em uma API, fornecendo informações detalhadas sobre o comportamento esperado da API. Elas são utilizadas na geração automática de documentação usando ferramentas compatíveis com OpenAPI, como o Swagger UI.
+
+> [retornar](#annottations) para o topo da página
+
+### `@SecurityRequirement`
+
+A anotação `@SecurityRequirement` faz parte da especificação OpenAPI (anteriormente conhecida como Swagger) versão 3 em Java. Essa anotação é utilizada para especificar os requisitos de segurança associados a uma operação (método) ou à API como um todo. Ela é usada para indicar como as solicitações para a operação ou API devem ser autenticadas e autorizadas.
+
+Principais características da anotação `@SecurityRequirement`:
+
+1. **Requisitos de Segurança Globais:**
+   - Pode ser aplicada a uma classe de controlador (controller) para definir requisitos de segurança globais para todas as operações na classe.
+
+2. **Requisitos de Segurança Locais:**
+   - Também pode ser aplicada a métodos específicos para definir requisitos de segurança específicos para operações individuais.
+
+3. **Lista de Esquemas de Segurança:**
+   - Permite especificar uma lista de esquemas de segurança (`security schemes`) que devem ser atendidos para acessar a operação ou a API.
+
+Exemplo de uso:
+
+```java
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
+@SecurityRequirement(name = "jwt-token")
+public class ExemploControlador {
+
+    // Código do método
+}
+```
+
+Neste exemplo, a anotação `@SecurityRequirement` é aplicada à classe `ExemploControlador`, indicando que a autenticação deve ser realizada usando um esquema de segurança chamado "jwt-token". Esse esquema deve ser definido em outro lugar na documentação OpenAPI, geralmente usando a anotação `@SecurityScheme`.
+
+É importante observar que a anotação `@SecurityRequirement` é apenas uma parte do modelo de segurança em OpenAPI, e geralmente é utilizada em conjunto com outras anotações, como `@SecurityScheme`, para fornecer uma descrição abrangente dos requisitos de segurança da API.
+
+Essas anotações são cruciais para descrever como a autenticação e a autorização devem ser tratadas em uma API, ajudando na geração precisa de documentação usando ferramentas compatíveis com OpenAPI, como o Swagger UI.
+
+> [retornar](#annottations) para o topo da página
+
+### `@Tag`
+
+A anotação `@Tag` faz parte da especificação OpenAPI (anteriormente conhecida como Swagger) versão 3 em Java. Essa anotação é utilizada para adicionar informações de tag a uma classe de controlador (controller) ou a um método específico, facilitando a organização e categorização da documentação da API.
+
+Principais características da anotação `@Tag`:
+
+1. **Categorização de Operações:**
+   - A anotação `@Tag` é usada para adicionar informações de tag a uma classe de controlador ou a um método específico. Essas tags são usadas para categorizar operações na documentação OpenAPI.
+
+2. **Descrição da Tag:**
+   - Permite incluir uma descrição para a tag, fornecendo informações adicionais sobre o propósito ou o contexto da categoria.
+
+3. **Organização da Documentação:**
+   - As tags ajudam a organizar a documentação da API, agrupando operações relacionadas sob categorias específicas.
+
+Exemplo de uso:
+
+```java
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Clientes", description = "Operações relacionadas a clientes")
+public class ClienteControlador {
+
+    // Código do método
+}
+```
+
+Neste exemplo, a anotação `@Tag` é aplicada à classe `ClienteControlador`, indicando que as operações nesta classe estão relacionadas a clientes. A descrição fornece mais informações sobre o propósito dessa categoria.
+
+Ao usar essa anotação em vários controladores ou métodos, você pode organizar a documentação da sua API de maneira mais clara e compreensível.
+
+Essa anotação é especialmente útil quando há muitas operações em sua API, permitindo que você as organize em categorias significativas para facilitar a navegação na documentação gerada usando ferramentas compatíveis com OpenAPI, como o Swagger UI.
 
 > [retornar](#annottations) para o topo da página
 
