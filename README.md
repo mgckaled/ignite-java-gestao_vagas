@@ -62,6 +62,8 @@ Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Moc
 > Informações sobre as principais [anotações](./.github/docs/b_annotations.md).
 >
 > Análise interpretativa e lógica do [código](./.github/docs/c_code-analysis.md)
+>
+> Avaliação do Aprendizado: [Quizzes e Questionários](./.github/docs/d_quizzes-e-questionarios.md)
 
 ## Licença
 
