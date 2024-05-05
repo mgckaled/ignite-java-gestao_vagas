@@ -17,6 +17,7 @@
   - [`java-jwt`](#java-jwt)
   - [`JUinit`](#juinit)
   - [`H2 Database`](#h2-database)
+  - [springdoc-openapi-starter-webmvc-ui](#springdoc-openapi-starter-webmvc-ui)
 
 ## `spring-boot-starter-web`
 
@@ -321,6 +322,39 @@ O H2 Database é um sistema de gerenciamento de banco de dados relacional escrit
 - Oferece modos de compatibilidade com MySQL e PostgreSQL, permitindo que os usuários migrem para o H2 com mais facilidade.
 
 O H2 é frequentemente utilizado em ambientes de desenvolvimento e teste, especialmente em situações em que a facilidade de configuração, a velocidade e a simplicidade são cruciais. No entanto, devido à sua natureza leve, também pode ser utilizado em ambientes de produção, dependendo dos requisitos específicos do projeto.
+
+## springdoc-openapi-starter-webmvc-ui
+
+O pacote `springdoc-openapi-starter-webmvc-ui` é uma ferramenta do Spring Boot para gerar automaticamente a documentação da API em formato OpenAPI (anteriormente conhecido como Swagger) para projetos que utilizam Spring Web MVC. Ele simplifica bastante o processo de documentação da API, permitindo que os desenvolvedores foquem mais na lógica de negócios do que na documentação manual.
+
+Aqui estão algumas informações detalhadas sobre o `springdoc-openapi-starter-webmvc-ui`:
+
+1. **Objetivo Principal**:
+   - O principal objetivo deste pacote é integrar facilmente a geração de documentação OpenAPI em projetos Spring Boot que utilizam Spring Web MVC para construir APIs RESTful.
+
+2. **Funcionalidades**:
+   - Geração automática de documentação OpenAPI: Ele analisa automaticamente os controladores e modelos do Spring MVC e gera a documentação correspondente em formato OpenAPI.
+   - Interface de usuário interativa: Além da geração de documentação, ele também fornece uma interface de usuário interativa (UI) para visualizar e interagir com a documentação gerada.
+   - Personalização: Permite personalizar a documentação gerada usando anotações específicas ou configuração via código.
+   - Suporte ao Swagger UI: Integra-se perfeitamente com o Swagger UI, que é uma interface de usuário popular para explorar e testar APIs documentadas no formato OpenAPI.
+
+3. **Compatibilidade**:
+   - É compatível com o Spring Boot, que é uma estrutura popular para o desenvolvimento de aplicativos Java baseados em Spring.
+   - Especificamente projetado para trabalhar com o Spring Web MVC, que é uma estrutura do Spring para construir aplicativos da web RESTful.
+
+4. **Configuração Fácil**:
+   - Pode ser facilmente integrado a projetos Spring Boot adicionando apenas algumas dependências Maven/Gradle e fazendo algumas configurações mínimas.
+
+5. **Integração com Spring Boot Actuator**:
+   - Pode ser integrado ao Spring Boot Actuator para fornecer endpoints adicionais relacionados à documentação da API, como `/actuator/openapi`, que retorna a especificação OpenAPI JSON.
+
+6. **Versatilidade**:
+   - Suporta várias versões do OpenAPI (2.x e 3.x) para atender às necessidades do projeto.
+   - Pode ser estendido com plugins para adicionar funcionalidades adicionais, se necessário.
+
+Em resumo, o `springdoc-openapi-starter-webmvc-ui` simplifica bastante o processo de documentação de APIs em projetos Spring Boot, permitindo que os desenvolvedores gerem automaticamente a documentação da API em formato OpenAPI e forneçam uma interface de usuário interativa para explorar e testar a API documentada.
+
+
 
 > [retornar](#dependencies) para o topo da página
 >

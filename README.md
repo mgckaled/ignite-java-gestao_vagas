@@ -60,14 +60,15 @@ Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Moc
 
 - Aplicar SonarQube junto ao Docker: `docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:9.9.0-community`
 
-- Configuração do SonarQube:
+- Configuração de login do SonarQube:
 
 ```bash
 mvn clean verify sonar:sonar \
   -Dsonar.projectKey=gestao_vagas" \
   -Dsonar.host.url=http://localhost:9000" \
-  -Dsonar.login=<password>
+  -Dsonar.login=sqp_6c1477e49427344d0e19222f94daa6bfe3666119
 ```
+- Acesso na porta: `localhost:9000`
 
 ### Módulo 6 - Implantação e Monitoramento
 
