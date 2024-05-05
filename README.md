@@ -19,7 +19,9 @@
   - [Sumário](#sumário)
   - [Sobre o Projeto](#sobre-o-projeto)
     - [Módulo 3 - Gestão de Vagas](#módulo-3---gestão-de-vagas)
+      - [Informações relevantes](#informações-relevantes)
     - [Módulo 4 - Documentação](#módulo-4---documentação)
+      - [Informações relevantes](#informações-relevantes-1)
     - [Módulo 5 - Testes e Qualidade de Código](#módulo-5---testes-e-qualidade-de-código)
     - [Módulo 6 - Implantação e Monitoramento](#módulo-6---implantação-e-monitoramento)
   - [Tecnologias](#tecnologias)
@@ -32,17 +34,31 @@
 
 Desenvolvimento de uma API REST para controles de Empresas, vagas e aplicações, utilizando-se das principais ferarmentas do Spring Boot para persistência, segurança e autorização.
 
+#### Informações relevantes
+
+- Para acessar o canco de dados através da conexão do banco de dados Postgres, execute o comando `docker-compose -build -d`. As configurações do container já estão conngiguradas no arquivo `docker-compose.yml`.
+- Uma vez o container montado, não é necessáio mais buildar: `docker-compose up -d`.
+- Nome do usuário e senha disponíveis no arquivo `resources/application.properties`.
+
 ### Módulo 4 - Documentação
 
 Criação da documentação da aplicação desenvolvida no módulo 3, utilziando o Swagger, que é uma das ferramentas mais utilziadas para a criação de documentação. Através dela foi definido exemplos de requisições e retornos.
 
-> Rota de acesso a documentação: `http://localhost:8080/swagger-ui/index.html`
+#### Informações relevantes
+
+- Rota de acesso a documentação: `http://localhost:8080/swagger-ui/index.html`
 
 ### Módulo 5 - Testes e Qualidade de Código
 
 Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Mockito, com testes de integração e testes unitários.
 
 ### Módulo 6 - Implantação e Monitoramento
+
+> Informações importantes [anotações](./.github/docs/b_annotations.md).
+>
+> Análise interpretativa e lógica do [código](./.github/docs/c_code-analysis.md)
+>
+> Avaliação do Aprendizado: [Quizzes e Questionários](./.github/docs/d_quizzes-e-questionarios.md)
 
 ## Tecnologias
 
@@ -58,12 +74,6 @@ Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Moc
 - [`H2 Database`](https://www.h2database.com/html/main.html)
 
 > Mais informações sobre [dependências do projeto](./.github/docs/a_dependencies.md).
->
-> Informações sobre as principais [anotações](./.github/docs/b_annotations.md).
->
-> Análise interpretativa e lógica do [código](./.github/docs/c_code-analysis.md)
->
-> Avaliação do Aprendizado: [Quizzes e Questionários](./.github/docs/d_quizzes-e-questionarios.md)
 
 ## Licença
 

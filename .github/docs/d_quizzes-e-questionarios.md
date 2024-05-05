@@ -9,8 +9,12 @@
   - [Módulo 3 - Rotas, Autenticação e Autorização](#módulo-3---rotas-autenticação-e-autorização)
     - [Quiz - Primeiros Passos](#quiz---primeiros-passos)
     - [Quiz - Autenticação e Autorização](#quiz---autenticação-e-autorização)
-    - [Questionário Avaliativo do Módulo](#questionário-avaliativo-do-módulo)
+    - [Questionário Avaliativo](#questionário-avaliativo)
   - [Módulo 4 - Documentação](#módulo-4---documentação)
+    - [Questionário Avaliativo](#questionário-avaliativo-1)
+  - [Módulo 5 - Testes e Qualidade de Código](#módulo-5---testes-e-qualidade-de-código)
+    - [Quiz - Testes da Aplicação](#quiz---testes-da-aplicação)
+    - [Quiz - Qualidade de Código](#quiz---qualidade-de-código)
 
 ## Módulo 3 - Rotas, Autenticação e Autorização
 
@@ -40,7 +44,7 @@
 
 5 - *No contexto do Spring Security, qual é o propósito da anotação `@PreAuthorize("hasRole('COLABORADORES')")`?* **Resposta:** Especifica que o método só pode ser acessado por usuários com a função "COLABORADORES".
 
-### Questionário Avaliativo do Módulo
+### Questionário Avaliativo
 
 1 - *Qual é a finalidade das anotações `@AllArgsConstructor` e `@NoArgsConstructor` do Lombok em Java?* **Resposta:** `@AllArgsConstructor` gera automaticamente um construtor com todos os campos da classe como parâmetros, enquanto `@NoArgsConstructor` cria um construtor padrão sem argumentos.
 
@@ -91,6 +95,8 @@
 
 ## Módulo 4 - Documentação
 
+### Questionário Avaliativo
+
 1 - *Qual é o propósito “principal” da documentação de código?* **Resposta:** Facilitar a compreensão do código para desenvolvedores e colaboradores.
 
 2 - *No contexto de documentação de API usando anotações como Swagger, o que representa a anotação `@Schema` no código abaixo?* **Resposta:** Especifica um modo de requisito obrigatório para o campo "Nome do candidato".
@@ -130,6 +136,24 @@
 ```java
 @ApiResponse(responseCode = "400", description = "User not found")
 ```
+
+## Módulo 5 - Testes e Qualidade de Código
+
+### Quiz - Testes da Aplicação
+
+1 - *Qual a importância dos testes em uma aplicação?* **Resposta:** Todas as alternativas anteriores estão corretas.
+
+2 - *Qual a principal diferença entre testes unitários e testes de integração?* **Resposta:** Os testes unitários testam unidades de código individuais, enquanto os testes de integração testam a interação entre unidades de código.
+
+3 - *A anotação `@InjectMocks` é usada para injetar automaticamente instâncias de objetos anotados com `@Mock` em objetos que são instâncias da classe sendo testada.* **Resposta:** Verdadeiro
+
+4 - *Ao realizar testes de integração em um aplicativo Spring Boot, você decide verificar se a configuração de segurança está funcionando corretamente. O aplicativo possui um controlador protegido que só deve ser acessado por usuários autenticados. Considere as opções abaixo e assinale a alternativa incorreta* **Resposta:** O Spring Security não oferece suporte para a configuração de autenticação baseada em tokens JWT (JSON Web Tokens) fora da caixa.
+
+5 - *Baseado no que foi mostrado em aula, como podemos capturar exceções e validar seu tipo em Java, utilizando o bloco Try-Catch e a assertiva `assertThat`?* **Resposta:** Usando o bloco Try-Catch e verificando o tipo com a assertiva `assertThat`.
+
+6 - *Como é abordado o teste de integração feito em aula, da camada de controller para a funcionalidade de cadastro de um job, utilizando JUnit e MockMvc?* **Resposta:** Simulando um servidor com o JUnit e verificando a resposta utilizando o MockMvc.
+
+### Quiz - Qualidade de Código
 
 > [retornar](#quizzes-e-avaliações) ao topo da página
 >
