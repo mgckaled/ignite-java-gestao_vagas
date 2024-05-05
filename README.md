@@ -23,6 +23,7 @@
     - [Módulo 4 - Documentação](#módulo-4---documentação)
       - [Informações relevantes](#informações-relevantes-1)
     - [Módulo 5 - Testes e Qualidade de Código](#módulo-5---testes-e-qualidade-de-código)
+      - [Informações relevantes](#informações-relevantes-2)
     - [Módulo 6 - Implantação e Monitoramento](#módulo-6---implantação-e-monitoramento)
   - [Tecnologias](#tecnologias)
     - [Principais Bibliotecas (Packages)](#principais-bibliotecas-packages)
@@ -57,6 +58,8 @@ Criação da documentação da aplicação desenvolvida no módulo 3, utilziando
 ### Módulo 5 - Testes e Qualidade de Código
 
 Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Mockito, com testes de integração e testes unitários.
+
+#### Informações relevantes
 
 - Aplicar SonarQube junto ao Docker: `docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:9.9.0-community`
 

@@ -15,6 +15,7 @@
   - [Módulo 5 - Testes e Qualidade de Código](#módulo-5---testes-e-qualidade-de-código)
     - [Quiz - Testes da Aplicação](#quiz---testes-da-aplicação)
     - [Quiz - Qualidade de Código](#quiz---qualidade-de-código)
+    - [Questionário Avaliativo](#questionário-avaliativo-2)
 
 ## Módulo 3 - Rotas, Autenticação e Autorização
 
@@ -135,7 +136,9 @@
 
 ```java
 @ApiResponse(responseCode = "400", description = "User not found")
+
 ```
+> [retornar](#quizzes-e-avaliações) ao topo da página
 
 ## Módulo 5 - Testes e Qualidade de Código
 
@@ -154,6 +157,33 @@
 6 - *Como é abordado o teste de integração feito em aula, da camada de controller para a funcionalidade de cadastro de um job, utilizando JUnit e MockMvc?* **Resposta:** Simulando um servidor com o JUnit e verificando a resposta utilizando o MockMvc.
 
 ### Quiz - Qualidade de Código
+
+1 *A refatoração de código é um processo que visa melhorar sua legibilidade e eficiência, tornando-o mais fácil de entender e manter ao longo do tempo.* **Resposta:** Verdadeiro
+
+2 *No contexto do SonarQube, considere as seguintes afirmações sobre as métricas e funcionalidades oferecidas por essa ferramenta. Identifique a opção correta.* **Resposta:** O SonarQube permite a definição de perfis de qualidade personalizados, nos quais é possível configurar regras específicas para atender aos padrões de codificação da equipe.
+
+3 *Comentar extensivamente cada linha de código é uma prática recomendada para garantir a qualidade do código, independentemente da situação.* **Resposta:** Falso
+
+4 *O QG (Quality Gate) no SonarQube é uma medida que avalia se um projeto atende aos critérios de qualidade definidos, e se todos os indicadores de qualidade estão dentro dos limites estabelecidos antes de ser considerado apto para ser implantado em produção.* **Resposta:** Verdadeiro
+
+5 *Qual dos seguintes aspectos é avaliado pelo coverage?* **Resposta:** Porcentagem de instruções ou linhas de código executadas durante os testes.
+
+### Questionário Avaliativo
+
+1 - *Qual a principal diferença entre testes unitários e testes de integração?* **Resposta:** Os testes unitários testam unidades de código individuais, enquanto os testes de integração testam a interação entre unidades de código.
+
+2 - *O Mockito é uma biblioteca de testes de unidade que permite a criação de objetos simulados.* **Resposta:** Verdadeiro
+
+3 - *O JUnit é uma ferramenta que serve para:* **Resposta:** Automatizar a execução de testes de unidade em Java.
+
+4 - *No contexto do SonarQube, considere as seguintes afirmações sobre as métricas e funcionalidades oferecidas por essa ferramenta. Identifique a opção correta.* **Resposta:** SonarQube permite a definição de perfis de qualidade personalizados, nos quais é possível configurar regras específicas para atender aos padrões de codificação da equipe.
+
+5 - *Qual é a importância do JaCoCo em uma aplicação Spring?* **Resposta:** Possibilita a geração de relatórios de cobertura de código para avaliação da qualidade de testes.
+
+6 - *Qual das seguintes opções representa corretamente algumas das principais métricas que podem ser definidas no SonarQube para avaliação da qualidade do código?* **Resposta:** Duplicações de código, vulnerabilidades de segurança, comentários por linha de código, taxa de conformidade com padrões de codificação, taxa de sucesso nos testes automatizados.
+
+7 - *O SonarQube é capaz de identificar automaticamente vulnerabilidades de segurança no código-fonte de um projeto?* **Resposta:** Verdadeiro
+
 
 > [retornar](#quizzes-e-avaliações) ao topo da página
 >
