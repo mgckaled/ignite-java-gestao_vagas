@@ -113,6 +113,8 @@ Nesse módulo iremos utilizar o Spring Actuator para monitoramento, junto a outr
   }
 }
 ```
+- Acesso ao Promethues: `localhost:9090`
+- Acesso ao Grafana: `localhost:3000`
 
 ## Tecnologias
 
