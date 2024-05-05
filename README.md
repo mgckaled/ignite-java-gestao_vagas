@@ -25,6 +25,7 @@
     - [Módulo 5 - Testes e Qualidade de Código](#módulo-5---testes-e-qualidade-de-código)
       - [Informações relevantes](#informações-relevantes-2)
     - [Módulo 6 - Implantação e Monitoramento](#módulo-6---implantação-e-monitoramento)
+      - [Informações relevantes](#informações-relevantes-3)
   - [Tecnologias](#tecnologias)
     - [Principais Bibliotecas (Packages)](#principais-bibliotecas-packages)
   - [Licença](#licença)
@@ -65,14 +66,108 @@ Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Moc
 
 - Acesso: `localhost:9000`. Efetue o cadastro manualmente para gerar a chave de acesso. A chave tem prazo de validade.
 
-- Configuração de login do SonarQube (com chave de acesso):
+- Configuração de login do SonarQube (com chave exemplo de exemplo):
 
 ```bash
  mvn clean verify sonar:sonar -Dsonar.projectKey=gestao_vagas -Dsonar.host.url=http://localhost:9000  -Dsonar.login=sqp_263ecefa0c3c7700e10df21796ae8621f32d7a6a
 ```
-> para evitar error, execute o build do SonarQube num terminal bash ou linux.
+
+> para evitar erros no terminal do Powershell, execute o build do SonarQube num terminal bash, linux ou outro de sua preferência.
 
 ### Módulo 6 - Implantação e Monitoramento
+
+Nesse módulo iremos utilizar o Spring Actuator para monitoramento, junto a outras ferramentas como Prometheus e o Grafana, tudo isso de forma visual e interativa.
+
+#### Informações relevantes
+
+- Acesso as métricas da aplicação:
+
+```json
+{
+  "_links": {
+    "self": {
+      "href": "http://localhost:8080/actuator",
+      "templated": false
+    },
+    "beans": {
+      "href": "http://localhost:8080/actuator/beans",
+      "templated": false
+    },
+    "caches-cache": {
+      "href": "http://localhost:8080/actuator/caches/{cache}",
+      "templated": true
+    },
+    "caches": {
+      "href": "http://localhost:8080/actuator/caches",
+      "templated": false
+    },
+    "health": {
+      "href": "http://localhost:8080/actuator/health",
+      "templated": false
+    },
+    "health-path": {
+      "href": "http://localhost:8080/actuator/health/{*path}",
+      "templated": true
+    },
+    "info": {
+      "href": "http://localhost:8080/actuator/info",
+      "templated": false
+    },
+    "conditions": {
+      "href": "http://localhost:8080/actuator/conditions",
+      "templated": false
+    },
+    "configprops": {
+      "href": "http://localhost:8080/actuator/configprops",
+      "templated": false
+    },
+    "configprops-prefix": {
+      "href": "http://localhost:8080/actuator/configprops/{prefix}",
+      "templated": true
+    },
+    "env": {
+      "href": "http://localhost:8080/actuator/env",
+      "templated": false
+    },
+    "env-toMatch": {
+      "href": "http://localhost:8080/actuator/env/{toMatch}",
+      "templated": true
+    },
+    "loggers": {
+      "href": "http://localhost:8080/actuator/loggers",
+      "templated": false
+    },
+    "loggers-name": {
+      "href": "http://localhost:8080/actuator/loggers/{name}",
+      "templated": true
+    },
+    "heapdump": {
+      "href": "http://localhost:8080/actuator/heapdump",
+      "templated": false
+    },
+    "threaddump": {
+      "href": "http://localhost:8080/actuator/threaddump",
+      "templated": false
+    },
+    "metrics-requiredMetricName": {
+      "href": "http://localhost:8080/actuator/metrics/{requiredMetricName}",
+      "templated": true
+    },
+    "metrics": {
+      "href": "http://localhost:8080/actuator/metrics",
+      "templated": false
+    },
+    "scheduledtasks": {
+      "href": "http://localhost:8080/actuator/scheduledtasks",
+      "templated": false
+    },
+    "mappings": {
+      "href": "http://localhost:8080/actuator/mappings",
+      "templated": false
+    }
+  }
+}
+```
 
 ## Tecnologias
 
@@ -91,7 +186,7 @@ Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Moc
 
 ## Licença
 
-Distribuído sob a licença *MIT*. Veja [LICENSE](LICENSE) para mais informações.
+Distribuído sob a licença _MIT_. Veja [LICENSE](LICENSE) para mais informações.
 
 ---
 

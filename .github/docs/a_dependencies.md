@@ -17,7 +17,8 @@
   - [`java-jwt`](#java-jwt)
   - [`JUinit`](#juinit)
   - [`H2 Database`](#h2-database)
-  - [springdoc-openapi-starter-webmvc-ui](#springdoc-openapi-starter-webmvc-ui)
+  - [`springdoc-openapi-starter-webmvc-ui`](#springdoc-openapi-starter-webmvc-ui)
+  - [`Actuator`](#actuator)
 
 ## `spring-boot-starter-web`
 
@@ -323,7 +324,7 @@ O H2 Database é um sistema de gerenciamento de banco de dados relacional escrit
 
 O H2 é frequentemente utilizado em ambientes de desenvolvimento e teste, especialmente em situações em que a facilidade de configuração, a velocidade e a simplicidade são cruciais. No entanto, devido à sua natureza leve, também pode ser utilizado em ambientes de produção, dependendo dos requisitos específicos do projeto.
 
-## springdoc-openapi-starter-webmvc-ui
+## `springdoc-openapi-starter-webmvc-ui`
 
 O pacote `springdoc-openapi-starter-webmvc-ui` é uma ferramenta do Spring Boot para gerar automaticamente a documentação da API em formato OpenAPI (anteriormente conhecido como Swagger) para projetos que utilizam Spring Web MVC. Ele simplifica bastante o processo de documentação da API, permitindo que os desenvolvedores foquem mais na lógica de negócios do que na documentação manual.
 
@@ -354,7 +355,23 @@ Aqui estão algumas informações detalhadas sobre o `springdoc-openapi-starter-
 
 Em resumo, o `springdoc-openapi-starter-webmvc-ui` simplifica bastante o processo de documentação de APIs em projetos Spring Boot, permitindo que os desenvolvedores gerem automaticamente a documentação da API em formato OpenAPI e forneçam uma interface de usuário interativa para explorar e testar a API documentada.
 
+## `Actuator`
 
+Em uma aplicação Spring Boot, um "actuator" é um módulo que fornece informações sobre o ambiente da aplicação em execução. Ele expõe endpoints RESTful que permitem monitoramento e gerenciamento da aplicação em tempo de execução. O Spring Boot Actuator fornece uma série de funcionalidades prontas para uso, como:
+
+1. **Endpoints de saúde (Health Endpoints)**: Permitem verificar o estado de saúde da aplicação, como se ela está online, se todos os serviços essenciais estão funcionando corretamente, etc.
+
+2. **Endpoints de informações (Info Endpoints)**: Fornecem informações gerais sobre a aplicação, como versão, descrição, etc.
+
+3. **Endpoints de métricas (Metrics Endpoints)**: Permitem monitorar métricas de desempenho da aplicação, como uso de CPU, memória, solicitações HTTP, entre outros.
+
+4. **Endpoints de auditoria (Auditing Endpoints)**: Registram eventos importantes que ocorrem na aplicação, como acesso a endpoints, alterações de configuração, etc.
+
+5. **Endpoints de ambiente (Environment Endpoints)**: Fornecem informações sobre as configurações do ambiente de execução da aplicação, como variáveis de ambiente, propriedades do sistema, etc.
+
+Esses endpoints são úteis para monitorar a saúde e o desempenho da aplicação, diagnosticar problemas e até mesmo automatizar tarefas de gerenciamento. O Spring Boot Actuator é altamente configurável e pode ser estendido para adicionar funcionalidades personalizadas, se necessário.
+
+> para mais informações: <https://docs.spring.io/spring-boot/docs/2.5.6/reference/html/actuator.html>
 
 > [retornar](#dependencies) para o topo da página
 >
