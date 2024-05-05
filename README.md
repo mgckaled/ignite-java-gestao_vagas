@@ -90,21 +90,25 @@ Nesse módulo iremos utilizar o Spring Actuator para monitoramento, junto a outr
       "href": "http://localhost:8080/actuator",
       "templated": false
     },
-    "health": {
-      "href": "http://localhost:8080/actuator/health",
-      "templated": false
-    },
     "health-path": {
       "href": "http://localhost:8080/actuator/health/{*path}",
       "templated": true
     },
-    "metrics-requiredMetricName": {
-      "href": "http://localhost:8080/actuator/metrics/{requiredMetricName}",
-      "templated": true
+    "health": {
+      "href": "http://localhost:8080/actuator/health",
+      "templated": false
+    },
+    "prometheus": {
+      "href": "http://localhost:8080/actuator/prometheus",
+      "templated": false
     },
     "metrics": {
       "href": "http://localhost:8080/actuator/metrics",
       "templated": false
+    },
+    "metrics-requiredMetricName": {
+      "href": "http://localhost:8080/actuator/metrics/{requiredMetricName}",
+      "templated": true
     }
   }
 }
