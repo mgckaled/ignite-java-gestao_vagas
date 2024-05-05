@@ -30,6 +30,12 @@
 
 ## Sobre o Projeto
 
+> Informações importantes: [anotações](./.github/docs/b_annotations.md).
+>
+> Análise interpretativa e lógica do [código](./.github/docs/c_code-analysis.md)
+>
+> Avaliação do Aprendizado: [Quizzes e Questionários](./.github/docs/d_quizzes-e-questionarios.md)
+
 ### Módulo 3 - Gestão de Vagas
 
 Desenvolvimento de uma API REST para controles de Empresas, vagas e aplicações, utilizando-se das principais ferarmentas do Spring Boot para persistência, segurança e autorização.
@@ -52,13 +58,9 @@ Criação da documentação da aplicação desenvolvida no módulo 3, utilziando
 
 Aprender sobre como inserir testes dentro da aplicação, utilizando JUnit e Mockito, com testes de integração e testes unitários.
 
-### Módulo 6 - Implantação e Monitoramento
+- Aplicar SonarQube junto ao Docker: `docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:9.9.0-community`
 
-> Informações importantes [anotações](./.github/docs/b_annotations.md).
->
-> Análise interpretativa e lógica do [código](./.github/docs/c_code-analysis.md)
->
-> Avaliação do Aprendizado: [Quizzes e Questionários](./.github/docs/d_quizzes-e-questionarios.md)
+### Módulo 6 - Implantação e Monitoramento
 
 ## Tecnologias
 
